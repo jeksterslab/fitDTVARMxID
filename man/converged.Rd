@@ -12,7 +12,7 @@ converged(object, ...)
   grad_tol = 0.01,
   hess_tol = 1e-08,
   vanishing_theta = TRUE,
-  tol = 0.001,
+  theta_tol = 0.001,
   prop = TRUE,
   ...
 )
@@ -29,10 +29,10 @@ Tolerance for the maximum absolute gradient.}
 Tolerance for Hessian eigenvalues;
 eigenvalues must be strictly greater than this value.}
 
-\item{vanishing_theta}{Local.
+\item{vanishing_theta}{Logical.
 Test for measurement error variance going to zero.}
 
-\item{tol}{Numeric.
+\item{theta_tol}{Numeric.
 Tolerance for vanishing theta test.}
 
 \item{prop}{Logical.
@@ -56,6 +56,10 @@ Convergence is defined by three criteria:
 \item The maximum absolute gradient is below \code{grad_tol}.
 \item The Hessian is positive definite
 with all eigenvalues greater than \code{hess_tol}.
+\item If \code{vanishing_theta = TRUE}, the model additionally checks
+that the diagonal elements of the measurement error covariance matrix
+(\eqn{\Theta}) are not vanishingly small,
+where “small” is defined by \code{theta_tol}.
 }
 }
 \author{

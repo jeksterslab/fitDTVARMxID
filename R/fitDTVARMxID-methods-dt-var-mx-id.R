@@ -286,6 +286,10 @@ vcov.dtvarmxid <- function(object,
 #'   \item The maximum absolute gradient is below `grad_tol`.
 #'   \item The Hessian is positive definite
 #'         with all eigenvalues greater than `hess_tol`.
+#'   \item If \code{vanishing_theta = TRUE}, the model additionally checks
+#'         that the diagonal elements of the measurement error covariance matrix
+#'         (\eqn{\Theta}) are not vanishingly small,
+#'         where “small” is defined by `theta_tol`.
 #' }
 #'
 #' @author Ivan Jacob Agaloos Pesigan
@@ -308,9 +312,9 @@ converged <- function(object,
 #' @param hess_tol Numeric scalar.
 #'   Tolerance for Hessian eigenvalues;
 #'   eigenvalues must be strictly greater than this value.
-#' @param vanishing_theta Local.
+#' @param vanishing_theta Logical.
 #'   Test for measurement error variance going to zero.
-#' @param tol Numeric.
+#' @param theta_tol Numeric.
 #'   Tolerance for vanishing theta test.
 #' @param prop Logical.
 #'   If `prop = FALSE`, a named logical vector indicating,
@@ -329,7 +333,7 @@ converged.dtvarmxid <- function(object,
                                 grad_tol = 1e-2,
                                 hess_tol = 1e-8,
                                 vanishing_theta = TRUE,
-                                tol = 0.001,
+                                theta_tol = 0.001,
                                 prop = TRUE,
                                 ...) {
   out <- sapply(
@@ -338,7 +342,7 @@ converged.dtvarmxid <- function(object,
                    grad_tol,
                    hess_tol,
                    vanishing_theta,
-                   tol) {
+                   theta_tol) {
       good_grad <- .MxHelperIsGoodFit(
         x = i,
         tol = grad_tol
@@ -373,7 +377,7 @@ converged.dtvarmxid <- function(object,
             }
           )
           if (length(theta_diag) > 0) {
-            theta_ok <- all(theta_diag > tol)
+            theta_ok <- all(theta_diag > theta_tol)
           } else {
             theta_ok <- TRUE
           }
@@ -386,7 +390,7 @@ converged.dtvarmxid <- function(object,
     grad_tol = grad_tol,
     hess_tol = hess_tol,
     vanishing_theta = vanishing_theta,
-    tol = tol
+    theta_tol = theta_tol
   )
   if (prop) {
     out <- mean(out)

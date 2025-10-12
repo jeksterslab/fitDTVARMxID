@@ -25,7 +25,9 @@ reference:
 articles:
 - title: Examples
   contents:
-  - by-id
+  - stable-reciprocal-regulation
+  - escalating-co-activation
+  - adaptive-recovery
 - title: Session Information
   contents:
   - session
