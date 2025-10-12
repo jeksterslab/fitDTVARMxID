@@ -1,0 +1,31 @@
+Package: fitDTVARMxID
+Title: Fit the Discrete-Time Vector Autoregressive Model for Multiple Individuals
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Ivan Jacob Agaloos",
+           family = "Pesigan",
+           role = c("aut", "cre", "cph"),
+           email = "r.jeksterslab@gmail.com",
+           comment = c(ORCID = "0000-0003-4818-8420"))
+Description: Fit the discrete-time vector autoregressive model for multiple individuals
+    using the 'OpenMx' package (Hunter, 2017 <doi:10.1080/10705511.2017.1369354>).
+URL: https://github.com/jeksterslab/fitDTVARMxID, https://jeksterslab.github.io/fitDTVARMxID/
+BugReports: https://github.com/jeksterslab/fitDTVARMxID/issues
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+VignetteBuilder: knitr
+Depends:
+    R (>= 4.5.0),
+    OpenMx (>= 2.22.9)
+Imports:
+    stats,
+    methods,
+    Matrix
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat,
+    simStateSpace
+RoxygenNote: 7.3.3.9000

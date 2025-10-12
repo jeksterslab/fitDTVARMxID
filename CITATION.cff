@@ -1,0 +1,38 @@
+# --------------------------------------------
+# CITATION file created with {cffr} R package
+# See also: https://docs.ropensci.org/cffr/
+# --------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "fitDTVARMxID" in publications use:'
+type: software
+license: MIT
+title: 'fitDTVARMxID: Fit the Discrete-Time Vector Autoregressive Model for Multiple
+  Individuals'
+version: 0.0.0.9000
+abstract: Fit the discrete-time vector autoregressive model for multiple individuals
+  using the 'OpenMx' package (Hunter, 2017 <https://doi.org/10.1080/10705511.2017.1369354>).
+authors:
+- family-names: Pesigan
+  given-names: Ivan Jacob Agaloos
+  email: r.jeksterslab@gmail.com
+  orcid: https://orcid.org/0000-0003-4818-8420
+preferred-citation:
+  type: manual
+  title: 'fitDTVARMxID: Fit the Discrete-Time Vector Autoregressive Model for Multiple
+    Individuals'
+  authors:
+  - family-names: Pesigan
+    given-names: Ivan Jacob Agaloos
+    email: jeksterslab@gmail.com
+    orcid: https://orcid.org/0000-0003-4818-8420
+  year: '2025'
+  notes: R package version 0.0.0.9000
+repository-code: https://github.com/jeksterslab/fitDTVARMxID
+url: https://jeksterslab.github.io/fitDTVARMxID/
+contact:
+- family-names: Pesigan
+  given-names: Ivan Jacob Agaloos
+  email: r.jeksterslab@gmail.com
+  orcid: https://orcid.org/0000-0003-4818-8420
+
