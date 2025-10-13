@@ -60,7 +60,7 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2025-10-12</h4>
+            <h4 data-toc-skip class="date">2025-10-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/fitDTVARMxID/blob/main/vignettes/adaptive-recovery.Rmd"><code>vignettes/adaptive-recovery.Rmd</code></a></small>
       <div class="d-none name"><code>adaptive-recovery.Rmd</code></div>
@@ -209,7 +209,7 @@ is a symmetric matrix.</p>
 <h3 id="notation">Notation<a class="anchor" aria-label="anchor" href="#notation"></a>
 </h3>
 <p>Let
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>11000</mn></mrow><annotation encoding="application/x-tex">t = 11000</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>10100</mn></mrow><annotation encoding="application/x-tex">t = 10100</annotation></semantics></math>
 be the number of time points and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">n = 100</annotation></semantics></math>
 be the number of individuals.</p>
@@ -324,7 +324,7 @@ be given by</p>
 <code class="sourceCode R"><span><span class="va">n</span></span>
 <span><span class="co">#&gt; [1] 100</span></span>
 <span><span class="va">time</span></span>
-<span><span class="co">#&gt; [1] 11000</span></span>
+<span><span class="co">#&gt; [1] 10100</span></span>
 <span><span class="va">burnin</span></span>
 <span><span class="co">#&gt; [1] 10000</span></span>
 <span><span class="co"># first mu0 in the list of length n</span></span>
@@ -579,23 +579,26 @@ are fixed using <code>mu0</code> and <code>sigma0</code>.</p>
 <span>  sigma0_l_values <span class="op">=</span> <span class="va">sigma0_l_values</span>,</span>
 <span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Intermediate files will be saved in /home/ibp5092/work/jeksterslab/devel_fitDTVARMxID/vignettes</span></span></code></pre></div>
+<span><span class="co">#&gt; Intermediate files will be saved in /home/ibp5092/work/jeksterslab/devel_fitDTVARMxID/vignettes</span></span>
+<span><span class="co">#&gt; Warning in parallel::mclapply(X = model, FUN = .MxHelperReadRunSave,</span></span>
+<span><span class="co">#&gt; tries_explore = tries_explore, : all scheduled cores encountered errors in user</span></span>
+<span><span class="co">#&gt; code</span></span></code></pre></div>
 <div class="section level4">
 <h4 id="means-of-parameter-estimates">Means of parameter estimates<a class="anchor" aria-label="anchor" href="#means-of-parameter-estimates"></a>
 </h4>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit</span>, means <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   beta_1_1   beta_2_1   beta_1_2   beta_2_2     nu_1_1     nu_2_1  psi_l_2_1 </span></span>
-<span><span class="co">#&gt;  0.5845719  0.2149955 -0.2944638  0.6949153  0.7719955  0.4854933 -0.4019180 </span></span>
+<span><span class="co">#&gt;  0.5607307  0.2413412 -0.3383500  0.7241810  0.7972803  0.4678057 -0.4286375 </span></span>
 <span><span class="co">#&gt;  psi_d_1_1  psi_d_2_1 theta_d_eq </span></span>
-<span><span class="co">#&gt; -1.2657355 -1.6315188 -3.1659310</span></span></code></pre></div>
+<span><span class="co">#&gt; -1.4063475 -2.1319473 -4.9364933</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="proportion-of-converged-cases">Proportion of converged cases<a class="anchor" aria-label="anchor" href="#proportion-of-converged-cases"></a>
 </h4>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/converged.html">converged</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.99</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 0.81</span></span></code></pre></div>
 </div>
 </div>
 </div>
