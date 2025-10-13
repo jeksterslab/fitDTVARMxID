@@ -1,4 +1,4 @@
-.MxHelperSigmaFromLDLMxMatrix <- function(p,
+.MxHelperSigmaFromLDLMxMatrix <- function(p, # nolint: object_name_linter, line_length_linter
                                           name,
                                           column_name,
                                           sdiag_name,

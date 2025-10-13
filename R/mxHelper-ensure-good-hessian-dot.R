@@ -9,12 +9,9 @@
                                        abs_bnd_tol = 1e-6,
                                        rel_bnd_tol = 1e-4,
                                        quiet = FALSE) {
-  # Check if the model needs to be run
   run <- is.null(model$output) ||
     is.null(model$output$status) ||
     model$output$status$code != 0L
-
-  # If it looks fitted, check quality of the fit
   if (!run) {
     good_fit <- .MxHelperIsGoodFit(
       x = model,
@@ -47,8 +44,6 @@
       checkHess = FALSE,
       silent = quiet
     )
-
-    # ---- 2) Local polish (no Hessian) ----
     fit <- OpenMx::mxTryHard(
       model = fit,
       extraTries = tries_explore,
@@ -57,8 +52,6 @@
       scale = 0.10,
       checkHess = FALSE
     )
-
-    # ---- 3) Compute Hessian once & test ----
     if (!quiet) {
       if (interactive()) {
         cat(
@@ -92,38 +85,31 @@
 
       if (attempt >= max_attempts) {
         warning(
-          "Hessian still not positive-definite after retries; returning last fit."
+          paste0(
+            "Hessian still not positive-definite after retries;",
+            " returning last fit."
+          )
         )
         result <- final
         break
       }
-
-      # ---- 3) Targeted remediation, then try again (no Hessian yet) ----
       attempt <- attempt + 1L
-
-      # Nudge parameters off bounds.
       fit <- .MxHelperNudgeOffBounds(
         x = final,
         eps = eps
       )
-
-      # If this is the last allowed attempt, relax bounds for the next run.
       if (attempt == max_attempts) {
         fit <- .MxHelperRelaxBounds(
           x = fit,
           factor = factor
         )
       }
-
-      # Wide exploration (no Hessian)
       fit <- OpenMx::mxTryHardWideSearch(
         model = fit,
         extraTries = tries_explore,
         checkHess = FALSE,
         silent = quiet
       )
-
-      # Local polish (no Hessian)
       fit <- OpenMx::mxTryHard(
         model = fit,
         extraTries = tries_explore,

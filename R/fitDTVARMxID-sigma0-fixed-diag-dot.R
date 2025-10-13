@@ -23,6 +23,7 @@
     d_lbound = rep(x = NA, times = k),
     d_ubound = rep(x = NA, times = k),
     d_rows = statenames,
-    d_cols = sigma0_d
+    d_cols = sigma0_d,
+    d_equal = FALSE
   )
 }
