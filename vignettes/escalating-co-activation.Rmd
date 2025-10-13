@@ -1,7 +1,7 @@
 ---
 title: "Fit the Discrete-Time Vector Autoregressive Model By ID (Escalating Co-Activation)"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-10-12"
+date: "2025-10-13"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -142,7 +142,7 @@ $\boldsymbol{\Psi}_{i}$ is a symmetric matrix.
 
 ### Notation
 
-Let $t = 11000$ be the number of time points and $n = 100$ be the number of individuals.
+Let $t = 10100$ be the number of time points and $n = 100$ be the number of individuals.
 
 Let the measurement model intecept vector $\boldsymbol{\nu}$ be normally distributed with the following means
 
@@ -253,7 +253,7 @@ Let the dynamic process noise $\boldsymbol{\Psi}$ be given by
 n
 #> [1] 100
 time
-#> [1] 11000
+#> [1] 10100
 burnin
 #> [1] 10000
 # first mu0 in the list of length n
@@ -506,10 +506,10 @@ fit <- FitDTVARMxID(
 
 ``` r
 summary(fit, means = TRUE)
-#>   beta_1_1   beta_2_1   beta_1_2   beta_2_2     nu_1_1     nu_2_1  psi_l_2_1 
-#>  0.6742276  0.0537112  0.1247398  0.6987225  0.9622773  0.9856447  0.5682099 
-#>  psi_d_1_1  psi_d_2_1 theta_d_eq 
-#> -0.8657461 -1.1133110 -2.4217840
+#>    beta_1_1    beta_2_1    beta_1_2    beta_2_2      nu_1_1      nu_2_1 
+#>  0.60642130  0.02814086  0.15636240  0.68696165  0.89816427  0.88340349 
+#>   psi_l_2_1   psi_d_1_1   psi_d_2_1  theta_d_eq 
+#>  0.56639838 -0.89233875 -1.88500679 -5.83038837
 ```
 
 #### Proportion of converged cases
@@ -517,7 +517,7 @@ summary(fit, means = TRUE)
 
 ``` r
 converged(fit)
-#> [1] 1
+#> [1] 0.82
 ```
 
 ## References

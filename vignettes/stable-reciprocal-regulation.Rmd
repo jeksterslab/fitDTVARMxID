@@ -1,7 +1,7 @@
 ---
 title: "Fit the Discrete-Time Vector Autoregressive Model By ID (Stable Reciprocal Regulation)"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-10-12"
+date: "2025-10-13"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -142,7 +142,7 @@ $\boldsymbol{\Psi}_{i}$ is a symmetric matrix.
 
 ### Notation
 
-Let $t = 11000$ be the number of time points and $n = 100$ be the number of individuals.
+Let $t = 10100$ be the number of time points and $n = 100$ be the number of individuals.
 
 Let the measurement model intecept vector $\boldsymbol{\nu}$ be normally distributed with the following means
 
@@ -253,7 +253,7 @@ Let the dynamic process noise $\boldsymbol{\Psi}$ be given by
 n
 #> [1] 100
 time
-#> [1] 11000
+#> [1] 10100
 burnin
 #> [1] 10000
 # first mu0 in the list of length n
@@ -499,6 +499,9 @@ fit <- FitDTVARMxID(
   ncores = parallel::detectCores()
 )
 #> Intermediate files will be saved in /home/ibp5092/work/jeksterslab/devel_fitDTVARMxID/vignettes
+#> Warning in parallel::mclapply(X = model, FUN = .MxHelperReadRunSave,
+#> tries_explore = tries_explore, : scheduled cores 3, 7, 8, 6, 2, 4, 1
+#> encountered errors in user code, all values of the jobs will be affected
 ```
 
 #### Means of parameter estimates
@@ -507,9 +510,9 @@ fit <- FitDTVARMxID(
 ``` r
 summary(fit, means = TRUE)
 #>   beta_1_1   beta_2_1   beta_1_2   beta_2_2     nu_1_1     nu_2_1  psi_l_2_1 
-#>  0.6683595 -0.1781364 -0.1799142  0.6379374  0.4560622 -0.4773197 -0.2498003 
+#>  0.6482783 -0.1853922 -0.1927488  0.6168938  0.4638306 -0.4847460 -0.2445400 
 #>  psi_d_1_1  psi_d_2_1 theta_d_eq 
-#> -1.5065231 -1.7041123 -3.2677440
+#> -1.6333661 -1.9208184 -8.0000754
 ```
 
 #### Proportion of converged cases
@@ -517,7 +520,7 @@ summary(fit, means = TRUE)
 
 ``` r
 converged(fit)
-#> [1] 1
+#> [1] 0.74
 ```
 
 ## References

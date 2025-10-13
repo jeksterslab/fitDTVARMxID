@@ -20,6 +20,7 @@
     d_lbound = psi_d_lbound,
     d_ubound = psi_d_ubound,
     d_rows = statenames,
-    d_cols = psi_d
+    d_cols = psi_d,
+    d_equal = FALSE
   )
 }

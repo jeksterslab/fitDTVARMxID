@@ -1,4 +1,4 @@
-.MxHelperSigmaFromLDLSoftplusAlgebra <- function(sdiag,
+.MxHelperSigmaFromLDLSoftplusAlgebra <- function(sdiag, # nolint: object_name_linter, line_length_linter
                                                  column,
                                                  iden,
                                                  name) {

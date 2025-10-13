@@ -35,7 +35,7 @@ options(scipen = 999)
 set.seed(42)
 burnin <- 10000
 n <- 100
-time <- 1000 + burnin
+time <- 100 + burnin
 k <- p <- 2
 iden <- diag(k)
 null_vec <- rep(x = 0, times = k)

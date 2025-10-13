@@ -1,4 +1,4 @@
-.MxHelperSigmaDiagFromLDLSoftplusAlgebra <- function(column,
+.MxHelperSigmaDiagFromLDLSoftplusAlgebra <- function(column, # nolint: object_name_linter, line_length_linter
                                                      name) {
   OpenMx::mxAlgebraFromString(
     algString = paste0(

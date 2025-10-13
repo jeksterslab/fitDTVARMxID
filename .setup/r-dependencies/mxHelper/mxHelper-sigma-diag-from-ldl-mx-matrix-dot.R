@@ -1,4 +1,4 @@
-.MxHelperSigmaDiagFromLDLMxMatrix <- function(p,
+.MxHelperSigmaDiagFromLDLMxMatrix <- function(p, # nolint: object_name_linter, line_length_linter
                                               name,
                                               column_name,
                                               d_free,
@@ -7,7 +7,7 @@
                                               d_ubound,
                                               d_rows,
                                               d_cols,
-                                              d_equal = FALSE) {
+                                              d_equal) {
   if (is.null(d_values)) {
     d_values <- rep(
       x = log(expm1(1)),
