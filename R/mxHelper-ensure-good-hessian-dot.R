@@ -37,7 +37,6 @@
         )
       }
     }
-
     fit <- OpenMx::mxTryHardWideSearch(
       model = model,
       extraTries = tries_explore,
@@ -62,7 +61,10 @@
     attempt <- 1L
     result <- NULL
     repeat {
-      final <- OpenMx::mxRun(fit)
+      final <- OpenMx::mxRun(
+        model = fit,
+        silent = quiet
+      )
 
       if (
         .MxHelperIsGoodFit(

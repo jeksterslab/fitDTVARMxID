@@ -32,12 +32,17 @@ FitDTVARMxID(
   nu_values = NULL,
   nu_lbound = NULL,
   nu_ubound = NULL,
+  theta_diag = TRUE,
   theta_fixed = FALSE,
   theta_d_free = NULL,
   theta_d_values = NULL,
   theta_d_lbound = NULL,
   theta_d_ubound = NULL,
   theta_d_equal = FALSE,
+  theta_l_free = NULL,
+  theta_l_values = NULL,
+  theta_l_lbound = NULL,
+  theta_l_ubound = NULL,
   mu0_fixed = TRUE,
   mu0_func = FALSE,
   mu0_free = NULL,
@@ -68,7 +73,7 @@ FitDTVARMxID(
   seed = 42,
   quiet = FALSE,
   ncores = NULL,
-  clean = TRUE
+  clean = FALSE
 )
 }
 \arguments{
@@ -185,6 +190,10 @@ Ignored if \code{nu_fixed = TRUE}.}
 If \code{NULL}, no upper bounds are set.
 Ignored if \code{nu_fixed = TRUE}.}
 
+\item{theta_diag}{Logical.
+If \code{TRUE}, \code{theta} is diagonal.
+If \code{FALSE}, \code{theta} is symmetric.}
+
 \item{theta_fixed}{Logical.
 If \code{TRUE}, the measurement error matrix \code{theta}
 is fixed to \code{SoftPlus(theta_d_values)}.
@@ -213,6 +222,22 @@ If \code{NULL}, no upper bounds are set.}
 When \code{TRUE}, all free diagonal elements of \code{theta_d} are constrained
 to be equal and estimated as a single shared parameter (\code{theta_eq}).
 Ignored if no diagonal elements are free.}
+
+\item{theta_l_free}{Logical matrix
+indicating which strictly-lower-triangular elements of \code{theta_l} are free.
+Ignored if \code{theta_diag = TRUE}.}
+
+\item{theta_l_values}{Numeric matrix
+of starting values for the strictly-lower-triangular elements of \code{theta_l}.
+If \code{NULL}, defaults to a null matrix.}
+
+\item{theta_l_lbound}{Numeric matrix
+with lower bounds for \code{theta_l}.
+If \code{NULL}, no lower bounds are set.}
+
+\item{theta_l_ubound}{Numeric matrix
+with upper bounds for \code{theta_l}.
+If \code{NULL}, no upper bounds are set.}
 
 \item{mu0_fixed}{Logical.
 If \code{TRUE}, the initial mean vector \code{mu0} is fixed.

@@ -35,6 +35,7 @@
     d_ubound = sigma0_d_ubound,
     d_rows = statenames,
     d_cols = sigma0_d,
+    d_equal = FALSE,
     l_free = sigma0_l_free,
     l_values = sigma0_l_values,
     l_lbound = sigma0_l_lbound,

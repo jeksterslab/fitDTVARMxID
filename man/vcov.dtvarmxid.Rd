@@ -11,6 +11,11 @@
   nu = TRUE,
   psi = TRUE,
   theta = TRUE,
+  converged = TRUE,
+  grad_tol = 0.01,
+  hess_tol = 1e-08,
+  vanishing_theta = TRUE,
+  theta_tol = 0.001,
   ...
 )
 }
@@ -46,6 +51,22 @@ If \code{theta = TRUE},
 include estimates of the \code{theta} matrix, if available.
 If \code{theta = FALSE},
 exclude estimates of the \code{theta} matrix.}
+
+\item{converged}{Logical.
+Only include converged cases.}
+
+\item{grad_tol}{Numeric scalar.
+Tolerance for the maximum absolute gradient.}
+
+\item{hess_tol}{Numeric scalar.
+Tolerance for Hessian eigenvalues;
+eigenvalues must be strictly greater than this value.}
+
+\item{vanishing_theta}{Logical.
+Test for measurement error variance going to zero.}
+
+\item{theta_tol}{Numeric.
+Tolerance for vanishing theta test.}
 
 \item{...}{additional arguments.}
 }

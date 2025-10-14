@@ -6,6 +6,7 @@
 #'   If `means = TRUE`, return means.
 #'   Otherwise, the function returns raw estimates.
 #' @param ... further arguments.
+#' @inheritParams coef.dtvarmxid
 #'
 #' @method print dtvarmxid
 #' @keywords methods
@@ -13,12 +14,32 @@
 #' @export
 print.dtvarmxid <- function(x,
                             means = FALSE,
+                            alpha = TRUE,
+                            beta = TRUE,
+                            nu = TRUE,
+                            psi = TRUE,
+                            theta = TRUE,
+                            converged = TRUE,
+                            grad_tol = 1e-2,
+                            hess_tol = 1e-8,
+                            vanishing_theta = TRUE,
+                            theta_tol = 0.001,
                             ...) {
   out <- do.call(
     what = "rbind",
     args = lapply(
       X = x$output,
-      FUN = coef
+      FUN = coef,
+      alpha = alpha,
+      beta = beta,
+      nu = nu,
+      psi = psi,
+      theta = theta,
+      converged = converged,
+      grad_tol = grad_tol,
+      hess_tol = hess_tol,
+      vanishing_theta = vanishing_theta,
+      theta_tol = theta_tol
     )
   )
   if (means) {
@@ -38,6 +59,7 @@ print.dtvarmxid <- function(x,
 #'   If `means = TRUE`, return means.
 #'   Otherwise, the function returns raw estimates.
 #' @param ... further arguments.
+#' @inheritParams coef.dtvarmxid
 #'
 #' @method summary dtvarmxid
 #' @keywords methods
@@ -45,12 +67,32 @@ print.dtvarmxid <- function(x,
 #' @export
 summary.dtvarmxid <- function(object,
                               means = FALSE,
+                              alpha = TRUE,
+                              beta = TRUE,
+                              nu = TRUE,
+                              psi = TRUE,
+                              theta = TRUE,
+                              converged = TRUE,
+                              grad_tol = 1e-2,
+                              hess_tol = 1e-8,
+                              vanishing_theta = TRUE,
+                              theta_tol = 0.001,
                               ...) {
   out <- do.call(
     what = "rbind",
     args = lapply(
       X = object$output,
-      FUN = coef
+      FUN = coef,
+      alpha = alpha,
+      beta = beta,
+      nu = nu,
+      psi = psi,
+      theta = theta,
+      converged = converged,
+      grad_tol = grad_tol,
+      hess_tol = hess_tol,
+      vanishing_theta = vanishing_theta,
+      theta_tol = theta_tol
     )
   )
   if (means) {
@@ -100,7 +142,10 @@ summary.dtvarmxid <- function(object,
 #'   include estimates of the `theta` matrix, if available.
 #'   If `theta = FALSE`,
 #'   exclude estimates of the `theta` matrix.
+#' @param converged Logical.
+#'   Only include converged cases.
 #' @param ... additional arguments.
+#' @inheritParams converged.dtvarmxid
 #' @return Returns a list of vectors of parameter estimates.
 #'
 #' @method coef dtvarmxid
@@ -113,9 +158,27 @@ coef.dtvarmxid <- function(object,
                            nu = TRUE,
                            psi = TRUE,
                            theta = TRUE,
+                           converged = TRUE,
+                           grad_tol = 1e-2,
+                           hess_tol = 1e-8,
+                           vanishing_theta = TRUE,
+                           theta_tol = 0.001,
                            ...) {
+  fit <- object$output
+  fit <- fit[
+    which(
+      converged.dtvarmxid(
+        object = object,
+        grad_tol = grad_tol,
+        hess_tol = hess_tol,
+        vanishing_theta = vanishing_theta,
+        theta_tol = theta_tol,
+        prop = FALSE
+      )
+    )
+  ]
   parnames <- names(
-    coef(object$output[[1]])
+    coef(fit[[1]])
   )
   idx <- integer(0)
   if (alpha) {
@@ -164,7 +227,7 @@ coef.dtvarmxid <- function(object,
     )
   }
   lapply(
-    X = object$output,
+    X = fit,
     FUN = function(x,
                    idx) {
       coef(x)[idx]
@@ -203,7 +266,10 @@ coef.dtvarmxid <- function(object,
 #'   include estimates of the `theta` matrix, if available.
 #'   If `theta = FALSE`,
 #'   exclude estimates of the `theta` matrix.
+#' @param converged Logical.
+#'   Only include converged cases.
 #' @param ... additional arguments.
+#' @inheritParams converged.dtvarmxid
 #' @return Returns a list of sampling variance-covariance matrices.
 #'
 #' @method vcov dtvarmxid
@@ -216,9 +282,27 @@ vcov.dtvarmxid <- function(object,
                            nu = TRUE,
                            psi = TRUE,
                            theta = TRUE,
+                           converged = TRUE,
+                           grad_tol = 1e-2,
+                           hess_tol = 1e-8,
+                           vanishing_theta = TRUE,
+                           theta_tol = 0.001,
                            ...) {
+  fit <- object$output
+  fit <- fit[
+    which(
+      converged.dtvarmxid(
+        object = object,
+        grad_tol = grad_tol,
+        hess_tol = hess_tol,
+        vanishing_theta = vanishing_theta,
+        theta_tol = theta_tol,
+        prop = FALSE
+      )
+    )
+  ]
   parnames <- names(
-    coef(object$output[[1]])
+    coef(fit[[1]])
   )
   idx <- integer(0)
   if (alpha) {
@@ -267,7 +351,7 @@ vcov.dtvarmxid <- function(object,
     )
   }
   lapply(
-    X = object$output,
+    X = fit,
     FUN = function(x,
                    idx) {
       vcov(x)[idx, idx, drop = FALSE]
@@ -334,7 +418,7 @@ converged.dtvarmxid <- function(object,
                                 hess_tol = 1e-8,
                                 vanishing_theta = TRUE,
                                 theta_tol = 0.001,
-                                prop = TRUE,
+                                prop = FALSE,
                                 ...) {
   out <- sapply(
     X = object$output,
@@ -343,6 +427,11 @@ converged.dtvarmxid <- function(object,
                    hess_tol,
                    vanishing_theta,
                    theta_tol) {
+      code <- !(
+        is.null(i$output) ||
+          is.null(i$output$status) ||
+          i$output$status$code != 0L
+      )
       good_grad <- .MxHelperIsGoodFit(
         x = i,
         tol = grad_tol
@@ -385,7 +474,7 @@ converged.dtvarmxid <- function(object,
           theta_ok <- TRUE
         }
       }
-      good_fit && theta_ok
+      good_fit && theta_ok && code
     },
     grad_tol = grad_tol,
     hess_tol = hess_tol,

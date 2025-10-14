@@ -10,6 +10,7 @@ lapply(
     theta <- fitDTVARMxID:::.FitDTVARMxIDTheta(
       k = k,
       observed = observed,
+      theta_diag = TRUE,
       theta_fixed = TRUE,
       theta_d_free = NULL,
       theta_d_values = NULL,

@@ -4,7 +4,21 @@
 \alias{summary.dtvarmxid}
 \title{Summary Method for Object of Class \code{dtvarmxid}}
 \usage{
-\method{summary}{dtvarmxid}(object, means = FALSE, ...)
+\method{summary}{dtvarmxid}(
+  object,
+  means = FALSE,
+  alpha = TRUE,
+  beta = TRUE,
+  nu = TRUE,
+  psi = TRUE,
+  theta = TRUE,
+  converged = TRUE,
+  grad_tol = 0.01,
+  hess_tol = 1e-08,
+  vanishing_theta = TRUE,
+  theta_tol = 0.001,
+  ...
+)
 }
 \arguments{
 \item{object}{an object of class \code{dtvarmxid}.}
@@ -12,6 +26,52 @@
 \item{means}{Logical.
 If \code{means = TRUE}, return means.
 Otherwise, the function returns raw estimates.}
+
+\item{alpha}{Logical.
+If \code{alpha = TRUE},
+include estimates of the \code{alpha} vector, if available.
+If \code{alpha = FALSE},
+exclude estimates of the \code{alpha} vector.}
+
+\item{beta}{Logical.
+If \code{beta = TRUE},
+include estimates of the \code{beta} matrix, if available.
+If \code{beta = FALSE},
+exclude estimates of the \code{beta} matrix.}
+
+\item{nu}{Logical.
+If \code{nu = TRUE},
+include estimates of the \code{nu} vector, if available.
+If \code{nu = FALSE},
+exclude estimates of the \code{nu} vector.}
+
+\item{psi}{Logical.
+If \code{psi = TRUE},
+include estimates of the \code{psi} matrix, if available.
+If \code{psi = FALSE},
+exclude estimates of the \code{psi} matrix.}
+
+\item{theta}{Logical.
+If \code{theta = TRUE},
+include estimates of the \code{theta} matrix, if available.
+If \code{theta = FALSE},
+exclude estimates of the \code{theta} matrix.}
+
+\item{converged}{Logical.
+Only include converged cases.}
+
+\item{grad_tol}{Numeric scalar.
+Tolerance for the maximum absolute gradient.}
+
+\item{hess_tol}{Numeric scalar.
+Tolerance for Hessian eigenvalues;
+eigenvalues must be strictly greater than this value.}
+
+\item{vanishing_theta}{Logical.
+Test for measurement error variance going to zero.}
+
+\item{theta_tol}{Numeric.
+Tolerance for vanishing theta test.}
 
 \item{...}{further arguments.}
 }
