@@ -42,7 +42,21 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for class 'dtvarmxid'</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, means <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  means <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  alpha <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  beta <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  nu <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  psi <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  theta <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  converged <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  grad_tol <span class="op">=</span> <span class="fl">0.01</span>,</span>
+<span>  hess_tol <span class="op">=</span> <span class="fl">1e-08</span>,</span>
+<span>  vanishing_theta <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  theta_tol <span class="op">=</span> <span class="fl">0.001</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -57,6 +71,72 @@
 <dd><p>Logical.
 If <code>means = TRUE</code>, return means.
 Otherwise, the function returns raw estimates.</p></dd>
+
+
+<dt id="arg-alpha">alpha<a class="anchor" aria-label="anchor" href="#arg-alpha"></a></dt>
+<dd><p>Logical.
+If <code>alpha = TRUE</code>,
+include estimates of the <code>alpha</code> vector, if available.
+If <code>alpha = FALSE</code>,
+exclude estimates of the <code>alpha</code> vector.</p></dd>
+
+
+<dt id="arg-beta">beta<a class="anchor" aria-label="anchor" href="#arg-beta"></a></dt>
+<dd><p>Logical.
+If <code>beta = TRUE</code>,
+include estimates of the <code>beta</code> matrix, if available.
+If <code>beta = FALSE</code>,
+exclude estimates of the <code>beta</code> matrix.</p></dd>
+
+
+<dt id="arg-nu">nu<a class="anchor" aria-label="anchor" href="#arg-nu"></a></dt>
+<dd><p>Logical.
+If <code>nu = TRUE</code>,
+include estimates of the <code>nu</code> vector, if available.
+If <code>nu = FALSE</code>,
+exclude estimates of the <code>nu</code> vector.</p></dd>
+
+
+<dt id="arg-psi">psi<a class="anchor" aria-label="anchor" href="#arg-psi"></a></dt>
+<dd><p>Logical.
+If <code>psi = TRUE</code>,
+include estimates of the <code>psi</code> matrix, if available.
+If <code>psi = FALSE</code>,
+exclude estimates of the <code>psi</code> matrix.</p></dd>
+
+
+<dt id="arg-theta">theta<a class="anchor" aria-label="anchor" href="#arg-theta"></a></dt>
+<dd><p>Logical.
+If <code>theta = TRUE</code>,
+include estimates of the <code>theta</code> matrix, if available.
+If <code>theta = FALSE</code>,
+exclude estimates of the <code>theta</code> matrix.</p></dd>
+
+
+<dt id="arg-converged">converged<a class="anchor" aria-label="anchor" href="#arg-converged"></a></dt>
+<dd><p>Logical.
+Only include converged cases.</p></dd>
+
+
+<dt id="arg-grad-tol">grad_tol<a class="anchor" aria-label="anchor" href="#arg-grad-tol"></a></dt>
+<dd><p>Numeric scalar.
+Tolerance for the maximum absolute gradient.</p></dd>
+
+
+<dt id="arg-hess-tol">hess_tol<a class="anchor" aria-label="anchor" href="#arg-hess-tol"></a></dt>
+<dd><p>Numeric scalar.
+Tolerance for Hessian eigenvalues;
+eigenvalues must be strictly greater than this value.</p></dd>
+
+
+<dt id="arg-vanishing-theta">vanishing_theta<a class="anchor" aria-label="anchor" href="#arg-vanishing-theta"></a></dt>
+<dd><p>Logical.
+Test for measurement error variance going to zero.</p></dd>
+
+
+<dt id="arg-theta-tol">theta_tol<a class="anchor" aria-label="anchor" href="#arg-theta-tol"></a></dt>
+<dd><p>Numeric.
+Tolerance for vanishing theta test.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>

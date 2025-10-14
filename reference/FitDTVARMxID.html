@@ -75,12 +75,17 @@ for each unit ID.</p>
 <span>  nu_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  nu_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  nu_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  theta_diag <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  theta_fixed <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  theta_d_free <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  theta_d_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  theta_d_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  theta_d_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  theta_d_equal <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  theta_l_free <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  theta_l_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  theta_l_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  theta_l_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  mu0_fixed <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  mu0_func <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  mu0_free <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -111,7 +116,7 @@ for each unit ID.</p>
 <span>  seed <span class="op">=</span> <span class="fl">42</span>,</span>
 <span>  quiet <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  ncores <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  clean <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  clean <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -286,6 +291,12 @@ If <code>NULL</code>, no upper bounds are set.
 Ignored if <code>nu_fixed = TRUE</code>.</p></dd>
 
 
+<dt id="arg-theta-diag">theta_diag<a class="anchor" aria-label="anchor" href="#arg-theta-diag"></a></dt>
+<dd><p>Logical.
+If <code>TRUE</code>, <code>theta</code> is diagonal.
+If <code>FALSE</code>, <code>theta</code> is symmetric.</p></dd>
+
+
 <dt id="arg-theta-fixed">theta_fixed<a class="anchor" aria-label="anchor" href="#arg-theta-fixed"></a></dt>
 <dd><p>Logical.
 If <code>TRUE</code>, the measurement error matrix <code>theta</code>
@@ -325,6 +336,30 @@ If <code>NULL</code>, no upper bounds are set.</p></dd>
 When <code>TRUE</code>, all free diagonal elements of <code>theta_d</code> are constrained
 to be equal and estimated as a single shared parameter (<code>theta_eq</code>).
 Ignored if no diagonal elements are free.</p></dd>
+
+
+<dt id="arg-theta-l-free">theta_l_free<a class="anchor" aria-label="anchor" href="#arg-theta-l-free"></a></dt>
+<dd><p>Logical matrix
+indicating which strictly-lower-triangular elements of <code>theta_l</code> are free.
+Ignored if <code>theta_diag = TRUE</code>.</p></dd>
+
+
+<dt id="arg-theta-l-values">theta_l_values<a class="anchor" aria-label="anchor" href="#arg-theta-l-values"></a></dt>
+<dd><p>Numeric matrix
+of starting values for the strictly-lower-triangular elements of <code>theta_l</code>.
+If <code>NULL</code>, defaults to a null matrix.</p></dd>
+
+
+<dt id="arg-theta-l-lbound">theta_l_lbound<a class="anchor" aria-label="anchor" href="#arg-theta-l-lbound"></a></dt>
+<dd><p>Numeric matrix
+with lower bounds for <code>theta_l</code>.
+If <code>NULL</code>, no lower bounds are set.</p></dd>
+
+
+<dt id="arg-theta-l-ubound">theta_l_ubound<a class="anchor" aria-label="anchor" href="#arg-theta-l-ubound"></a></dt>
+<dd><p>Numeric matrix
+with upper bounds for <code>theta_l</code>.
+If <code>NULL</code>, no upper bounds are set.</p></dd>
 
 
 <dt id="arg-mu-fixed">mu0_fixed<a class="anchor" aria-label="anchor" href="#arg-mu-fixed"></a></dt>
