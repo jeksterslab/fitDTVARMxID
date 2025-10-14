@@ -13,7 +13,7 @@ converged(object, ...)
   hess_tol = 1e-08,
   vanishing_theta = TRUE,
   theta_tol = 0.001,
-  prop = TRUE,
+  prop = FALSE,
   ...
 )
 }

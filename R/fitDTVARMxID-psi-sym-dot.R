@@ -35,6 +35,7 @@
     d_ubound = psi_d_ubound,
     d_rows = statenames,
     d_cols = psi_d,
+    d_equal = FALSE,
     l_free = psi_l_free,
     l_values = psi_l_values,
     l_lbound = psi_l_lbound,

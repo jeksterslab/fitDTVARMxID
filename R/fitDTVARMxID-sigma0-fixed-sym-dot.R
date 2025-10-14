@@ -35,6 +35,7 @@
     d_ubound = rep(x = NA, times = k),
     d_rows = statenames,
     d_cols = sigma0_d,
+    d_equal = FALSE,
     l_free = matrix(data = FALSE, nrow = k, ncol = k),
     l_values = matrix(data = 0, nrow = k, ncol = k),
     l_lbound = rep(x = NA, times = k),

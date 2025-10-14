@@ -53,8 +53,4 @@ See
 [GitHub Pages](https://jeksterslab.github.io/fitDTVARMxID)
 for package documentation.
 
-See
-[Quarto Pub](https://jeksterslab.quarto.pub/fitDTVARMxID)
-for package wiki and other resources.
-
 ## References

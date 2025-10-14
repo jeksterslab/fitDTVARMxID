@@ -197,6 +197,9 @@
 #' @param nu_ubound Numeric vector of upper bounds for `nu`.
 #'   If `NULL`, no upper bounds are set.
 #'   Ignored if `nu_fixed = TRUE`.
+#' @param theta_diag Logical.
+#'   If `TRUE`, `theta` is diagonal.
+#'   If `FALSE`, `theta` is symmetric.
 #' @param theta_fixed Logical.
 #'   If `TRUE`, the measurement error matrix `theta`
 #'   is fixed to `SoftPlus(theta_d_values)`.
@@ -220,6 +223,18 @@
 #'   When `TRUE`, all free diagonal elements of `theta_d` are constrained
 #'   to be equal and estimated as a single shared parameter (`theta_eq`).
 #'   Ignored if no diagonal elements are free.
+#' @param theta_l_free Logical matrix
+#'   indicating which strictly-lower-triangular elements of `theta_l` are free.
+#'   Ignored if `theta_diag = TRUE`.
+#' @param theta_l_values Numeric matrix
+#'   of starting values for the strictly-lower-triangular elements of `theta_l`.
+#'   If `NULL`, defaults to a null matrix.
+#' @param theta_l_lbound Numeric matrix
+#'   with lower bounds for `theta_l`.
+#'   If `NULL`, no lower bounds are set.
+#' @param theta_l_ubound Numeric matrix
+#'   with upper bounds for `theta_l`.
+#'   If `NULL`, no upper bounds are set.
 #' @param mu0_fixed Logical.
 #'   If `TRUE`, the initial mean vector `mu0` is fixed.
 #'   If `FALSE`, `mu0` is estimated.
@@ -439,12 +454,17 @@ FitDTVARMxID <- function(data,
                          nu_values = NULL,
                          nu_lbound = NULL,
                          nu_ubound = NULL,
+                         theta_diag = TRUE,
                          theta_fixed = FALSE,
                          theta_d_free = NULL,
                          theta_d_values = NULL,
                          theta_d_lbound = NULL,
                          theta_d_ubound = NULL,
                          theta_d_equal = FALSE,
+                         theta_l_free = NULL,
+                         theta_l_values = NULL,
+                         theta_l_lbound = NULL,
+                         theta_l_ubound = NULL,
                          mu0_fixed = TRUE,
                          mu0_func = FALSE,
                          mu0_free = NULL,
@@ -475,7 +495,7 @@ FitDTVARMxID <- function(data,
                          seed = 42,
                          quiet = FALSE,
                          ncores = NULL,
-                         clean = TRUE) {
+                         clean = FALSE) {
   stopifnot(
     dir.exists(path),
     grepl(
@@ -483,13 +503,17 @@ FitDTVARMxID <- function(data,
       x = prefix
     )
   )
-  message(
-    paste0(
-      "Intermediate files will be saved in ",
-      path,
-      "\n"
-    )
-  )
+  if (!quiet) {
+    if (interactive()) {
+      message(
+        paste0(
+          "Intermediate files will be saved in ",
+          path,
+          "\n"
+        )
+      )
+    }
+  }
   args <- list(
     data = data,
     observed = observed,
@@ -518,12 +542,17 @@ FitDTVARMxID <- function(data,
     nu_values = nu_values,
     nu_lbound = nu_lbound,
     nu_ubound = nu_ubound,
+    theta_diag = theta_diag,
     theta_fixed = theta_fixed,
     theta_d_free = theta_d_free,
     theta_d_values = theta_d_values,
     theta_d_lbound = theta_d_lbound,
     theta_d_ubound = theta_d_ubound,
     theta_d_equal = theta_d_equal,
+    theta_l_free = theta_l_free,
+    theta_l_values = theta_l_values,
+    theta_l_lbound = theta_l_lbound,
+    theta_l_ubound = theta_l_ubound,
     mu0_fixed = mu0_fixed,
     mu0_func = mu0_func,
     mu0_free = mu0_free,
@@ -584,12 +613,17 @@ FitDTVARMxID <- function(data,
     nu_values = nu_values,
     nu_lbound = nu_lbound,
     nu_ubound = nu_ubound,
+    theta_diag = theta_diag,
     theta_fixed = theta_fixed,
     theta_d_free = theta_d_free,
     theta_d_values = theta_d_values,
     theta_d_lbound = theta_d_lbound,
     theta_d_ubound = theta_d_ubound,
     theta_d_equal = theta_d_equal,
+    theta_l_free = theta_l_free,
+    theta_l_values = theta_l_values,
+    theta_l_lbound = theta_l_lbound,
+    theta_l_ubound = theta_l_ubound,
     mu0_fixed = mu0_fixed,
     mu0_func = mu0_func,
     mu0_free = mu0_free,

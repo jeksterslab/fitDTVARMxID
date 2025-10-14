@@ -28,7 +28,8 @@
       } else {
         model <- readRDS(input)
         fit <- OpenMx::mxTryHard(
-          model = model
+          model = model,
+          silent = quiet
         )
         saveRDS(object = fit, file = input)
         readRDS(file = input)

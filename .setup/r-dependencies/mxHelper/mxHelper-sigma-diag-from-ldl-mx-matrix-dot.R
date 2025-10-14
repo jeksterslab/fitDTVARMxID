@@ -40,7 +40,7 @@
     col = d_cols,
     name = column_name
   )
-  if (isTRUE(d_equal)) {
+  if (d_equal) {
     mat <- column[[1]]
     eq_label <- paste0(
       column_name,

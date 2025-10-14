@@ -49,8 +49,8 @@ lambda <- list(
 theta <- list(
   matrix(
     data = c(
-      0.09, 0.00,
-      0.00, 0.09
+      0.20, 0.05,
+      0.05, 0.20
     ),
     nrow = p,
     ncol = p
@@ -393,9 +393,38 @@ theta[[1]]
 theta_l[[1]] # theta_l <- t(chol(theta))
 ```
 
+### Visualizing the Dynamics Without Process Noise and Measurement Error (n = 5 with Different Initial Condition)
+
+```{r no-error}
+#| echo = FALSE
+library(simStateSpace)
+sim <- SimSSMFixed(
+  n = 5,
+  time = 20,
+  mu0 = c(0, 0),
+  sigma0_l = diag(2),
+  alpha = c(0, 0),
+  beta = beta_mu,
+  psi_l = matrix(
+    data = 0,
+    nrow = k,
+    ncol = k
+  ),
+  nu = nu_mu,
+  lambda = diag(2),
+  theta_l = matrix(
+    data = 0,
+    nrow = k,
+    ncol = k
+  ),
+  type = 0
+)
+plot(sim, type = "l")
+```
+
 ### Using the `SimSSMIVary` Function from the `simStateSpace` Package to Simulate Data
 
-```{r}
+```{r error}
 library(simStateSpace)
 sim <- SimSSMIVary(
   n = n,
@@ -513,6 +542,10 @@ theta_d_values <- ldl_theta_values$d_uc
 theta_d_values
 ```
 
+```{r}
+theta_l_values <- ldl_theta_values$l_mat_strict
+```
+
 ### Initial mean vector (`mu_0`) and covariance matrix (`sigma_0`)
 
 The initial mean vector $\boldsymbol{\mu_0}$ and covariance matrix $\boldsymbol{\Sigma_0}$
@@ -552,25 +585,28 @@ fit <- FitDTVARMxID(
   psi_d_values = psi_d_values,
   psi_l_values = psi_l_values,
   nu_values = nu_values,
+  theta_diag = FALSE,
   theta_d_values = theta_d_values,
-  theta_d_equal = TRUE,
+  theta_l_values = theta_l_values,
   mu0_values = mu0_values,
   sigma0_d_values = sigma0_d_values,
   sigma0_l_values = sigma0_l_values,
+  prefix = "escalating",
+  quiet = TRUE,
   ncores = parallel::detectCores()
 )
 ```
 
-#### Means of parameter estimates
+#### Parameter estimates
 
 ```{r}
-summary(fit, means = TRUE)
+summary(fit)
 ```
 
 #### Proportion of converged cases
 
 ```{r}
-converged(fit)
+converged(fit, prop = TRUE)
 ```
 
 ## References

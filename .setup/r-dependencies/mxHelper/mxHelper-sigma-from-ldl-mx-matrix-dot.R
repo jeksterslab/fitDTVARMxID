@@ -9,6 +9,7 @@
                                           d_ubound,
                                           d_rows,
                                           d_cols,
+                                          d_equal,
                                           l_free,
                                           l_values,
                                           l_lbound,
@@ -74,6 +75,64 @@
     col = d_cols,
     name = column_name
   )
+  if (d_equal) {
+    mat <- column[[1]]
+    eq_label <- paste0(
+      column_name,
+      "_eq"
+    )
+    fr <- matrix(
+      data = mat@free,
+      nrow = p,
+      ncol = 1
+    )
+    lab <- matrix(
+      data = mat@labels,
+      nrow = p,
+      ncol = 1
+    )
+    val <- matrix(
+      data = mat@values,
+      nrow = p,
+      ncol = 1
+    )
+    lab[fr] <- eq_label
+    v0 <- if (length(d_values) > 0) {
+      d_values[1]
+    } else {
+      log(expm1(1))
+    }
+    val[fr] <- v0
+    if (!is.null(mat@lbound)) {
+      lb <- matrix(
+        data = mat@lbound,
+        nrow = p,
+        ncol = 1
+      )
+      lb[fr] <- if (length(d_lbound)) {
+        d_lbound[1]
+      } else {
+        lb[fr]
+      }
+      mat@lbound <- lb
+    }
+    if (!is.null(mat@ubound)) {
+      ub <- matrix(
+        data = mat@ubound,
+        nrow = p,
+        ncol = 1
+      )
+      ub[fr] <- if (length(d_ubound)) {
+        d_ubound[1]
+      } else {
+        ub[fr]
+      }
+      mat@ubound <- ub
+    }
+    mat@labels <- lab
+    mat@values <- val
+    column[[1]] <- mat
+  }
   if (length(column) == 1) {
     names(column) <- column_name
   } else {
@@ -86,6 +145,10 @@
       )
     )
   }
+  out <- c(
+    out,
+    column
+  )
   out <- c(
     out,
     column
