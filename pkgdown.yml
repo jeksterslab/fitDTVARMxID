@@ -2,12 +2,15 @@ pandoc: 3.8.2
 pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
-  adaptive-recovery: adaptive-recovery.html
-  escalating-co-activation: escalating-co-activation.html
+  adaptive-recovery-100: adaptive-recovery-100.html
+  adaptive-recovery-1000: adaptive-recovery-1000.html
+  escalating-co-activation-100: escalating-co-activation-100.html
+  escalating-co-activation-1000: escalating-co-activation-1000.html
   fitDTVARMxID: fitDTVARMxID.html
   session: session.html
-  stable-reciprocal-regulation: stable-reciprocal-regulation.html
-last_built: 2025-10-14T00:45Z
+  stable-reciprocal-regulation-100: stable-reciprocal-regulation-100.html
+  stable-reciprocal-regulation-1000: stable-reciprocal-regulation-1000.html
+last_built: 2025-10-15T15:16Z
 urls:
   reference: https://github.com/jeksterslab/fitDTVARMxID/reference
   article: https://github.com/jeksterslab/fitDTVARMxID/articles
