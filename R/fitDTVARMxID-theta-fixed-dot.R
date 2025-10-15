@@ -60,7 +60,9 @@
           "`theta_l_values` not supplied"
         )
       }
-      ldl <- l %*% d %*% t(l)
+      iden <- d_mat <- diag(length(d))
+      diag(d_mat) <- d
+      ldl <- (l + iden) %*% d_mat %*% t(l + iden)
       ldl <- 0.5 * (ldl + t(ldl))
       out <- OpenMx::mxMatrix(
         type = "Sym",

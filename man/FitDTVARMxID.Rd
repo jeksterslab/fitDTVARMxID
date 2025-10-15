@@ -73,7 +73,7 @@ FitDTVARMxID(
   seed = 42,
   quiet = FALSE,
   ncores = NULL,
-  clean = FALSE
+  clean = TRUE
 )
 }
 \arguments{

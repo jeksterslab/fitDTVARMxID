@@ -495,7 +495,7 @@ FitDTVARMxID <- function(data,
                          seed = 42,
                          quiet = FALSE,
                          ncores = NULL,
-                         clean = FALSE) {
+                         clean = TRUE) {
   stopifnot(
     dir.exists(path),
     grepl(

@@ -28,4 +28,6 @@ Suggests:
     rmarkdown,
     testthat,
     simStateSpace
+Remotes:
+    jeksterslab/metaVAR
 RoxygenNote: 7.3.3.9000
