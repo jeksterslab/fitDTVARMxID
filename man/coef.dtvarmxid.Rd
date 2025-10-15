@@ -56,17 +56,21 @@ exclude estimates of the \code{theta} matrix.}
 Only include converged cases.}
 
 \item{grad_tol}{Numeric scalar.
-Tolerance for the maximum absolute gradient.}
+Tolerance for the maximum absolute gradient
+if \code{converged = TRUE}.}
 
 \item{hess_tol}{Numeric scalar.
 Tolerance for Hessian eigenvalues;
-eigenvalues must be strictly greater than this value.}
+eigenvalues must be strictly greater than this value
+if \code{converged = TRUE}.}
 
 \item{vanishing_theta}{Logical.
-Test for measurement error variance going to zero.}
+Test for measurement error variance going to zero
+if \code{converged = TRUE}.}
 
 \item{theta_tol}{Numeric.
-Tolerance for vanishing theta test.}
+Tolerance for vanishing theta test
+if \code{converged} and \code{theta_tol} are \code{TRUE}.}
 
 \item{...}{additional arguments.}
 }

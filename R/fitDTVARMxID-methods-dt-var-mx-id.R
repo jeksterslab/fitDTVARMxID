@@ -144,8 +144,20 @@ summary.dtvarmxid <- function(object,
 #'   exclude estimates of the `theta` matrix.
 #' @param converged Logical.
 #'   Only include converged cases.
+#' @param grad_tol Numeric scalar.
+#'   Tolerance for the maximum absolute gradient
+#'   if `converged = TRUE`.
+#' @param hess_tol Numeric scalar.
+#'   Tolerance for Hessian eigenvalues;
+#'   eigenvalues must be strictly greater than this value
+#'   if `converged = TRUE`.
+#' @param vanishing_theta Logical.
+#'   Test for measurement error variance going to zero
+#'   if `converged = TRUE`.
+#' @param theta_tol Numeric.
+#'   Tolerance for vanishing theta test
+#'   if `converged` and `theta_tol` are `TRUE`.
 #' @param ... additional arguments.
-#' @inheritParams converged.dtvarmxid
 #' @return Returns a list of vectors of parameter estimates.
 #'
 #' @method coef dtvarmxid
@@ -268,8 +280,20 @@ coef.dtvarmxid <- function(object,
 #'   exclude estimates of the `theta` matrix.
 #' @param converged Logical.
 #'   Only include converged cases.
+#' @param grad_tol Numeric scalar.
+#'   Tolerance for the maximum absolute gradient
+#'   if `converged = TRUE`.
+#' @param hess_tol Numeric scalar.
+#'   Tolerance for Hessian eigenvalues;
+#'   eigenvalues must be strictly greater than this value
+#'   if `converged = TRUE`.
+#' @param vanishing_theta Logical.
+#'   Test for measurement error variance going to zero
+#'   if `converged = TRUE`.
+#' @param theta_tol Numeric.
+#'   Tolerance for vanishing theta test
+#'   if `converged` and `theta_tol` are `TRUE`.
 #' @param ... additional arguments.
-#' @inheritParams converged.dtvarmxid
 #' @return Returns a list of sampling variance-covariance matrices.
 #'
 #' @method vcov dtvarmxid
