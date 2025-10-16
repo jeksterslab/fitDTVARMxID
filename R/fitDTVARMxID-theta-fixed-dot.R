@@ -60,7 +60,7 @@
           "`theta_l_values` not supplied"
         )
       }
-      iden <- d_mat <- diag(length(d))
+      iden <- d_mat <- diag(k)
       diag(d_mat) <- d
       ldl <- (l + iden) %*% d_mat %*% t(l + iden)
       ldl <- 0.5 * (ldl + t(ldl))
