@@ -1,6 +1,5 @@
 .MxHelperNudgeOffBounds <- function(x,
                                     eps = 1e-6) {
-  # Move free parameters slightly into the interior if they sit on bounds.
   pars <- OpenMx::omxGetParameters(x)
   lb <- OpenMx::omxGetParameters(
     model = x,

@@ -6,7 +6,9 @@
                                  hess_tol = 1e-8,
                                  eps = 1e-6,
                                  factor = 10,
-                                 quiet = FALSE,
+                                 abs_bnd_tol = 1e-6,
+                                 rel_bnd_tol = 1e-4,
+                                 silent = FALSE,
                                  check_hess = TRUE) {
   tryCatch(
     {
@@ -21,7 +23,9 @@
           hess_tol = hess_tol,
           eps = eps,
           factor = factor,
-          quiet = quiet
+          abs_bnd_tol = abs_bnd_tol,
+          rel_bnd_tol = rel_bnd_tol,
+          silent = silent
         )
         saveRDS(object = fit, file = input)
         readRDS(file = input)
@@ -29,7 +33,7 @@
         model <- readRDS(input)
         fit <- OpenMx::mxTryHard(
           model = model,
-          silent = quiet
+          silent = silent
         )
         saveRDS(object = fit, file = input)
         readRDS(file = input)

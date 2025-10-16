@@ -64,7 +64,7 @@
                           path,
                           prefix,
                           seed,
-                          quiet,
+                          silent,
                           ncores,
                           clean) {
   threads <- OpenMx::mxOption(
@@ -183,7 +183,7 @@
             grad_tol = grad_tol,
             hess_tol = hess_tol,
             eps = eps,
-            quiet = quiet,
+            silent = silent,
             check_hess = check_hess[i],
             mc.cores = ncores
           )
@@ -218,7 +218,7 @@
             grad_tol = grad_tol,
             hess_tol = hess_tol,
             eps = eps,
-            quiet = quiet,
+            silent = silent,
             check_hess = check_hess[i]
           )
         )
@@ -244,7 +244,7 @@
           grad_tol = grad_tol,
           hess_tol = hess_tol,
           eps = eps,
-          quiet = quiet,
+          silent = silent,
           check_hess = check_hess[i]
         )
       )

@@ -8,7 +8,7 @@
                                        factor = 10,
                                        abs_bnd_tol = 1e-6,
                                        rel_bnd_tol = 1e-4,
-                                       quiet = FALSE) {
+                                       silent = FALSE) {
   run <- is.null(model$output) ||
     is.null(model$output$status) ||
     model$output$status$code != 0L
@@ -30,7 +30,7 @@
   }
   if (run) {
     # ---- 1) Wide exploration (no Hessian) ----
-    if (!quiet) {
+    if (!silent) {
       if (interactive()) {
         cat(
           "\nStarting initial wide exploration...\n"
@@ -41,17 +41,17 @@
       model = model,
       extraTries = tries_explore,
       checkHess = FALSE,
-      silent = quiet
+      silent = silent
     )
     fit <- OpenMx::mxTryHard(
       model = fit,
       extraTries = tries_explore,
-      silent = quiet,
+      silent = silent,
       jitterDistrib = "rnorm",
       scale = 0.10,
       checkHess = FALSE
     )
-    if (!quiet) {
+    if (!silent) {
       if (interactive()) {
         cat(
           "\nStarting Hessian computation...\n"
@@ -63,7 +63,7 @@
     repeat {
       final <- OpenMx::mxRun(
         model = fit,
-        silent = quiet
+        silent = silent
       )
 
       if (
@@ -110,12 +110,12 @@
         model = fit,
         extraTries = tries_explore,
         checkHess = FALSE,
-        silent = quiet
+        silent = silent
       )
       fit <- OpenMx::mxTryHard(
         model = fit,
         extraTries = tries_explore,
-        silent = quiet,
+        silent = silent,
         jitterDistrib = "rnorm",
         scale = 0.10,
         checkHess = FALSE
