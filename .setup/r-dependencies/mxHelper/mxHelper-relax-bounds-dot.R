@@ -1,6 +1,5 @@
 .MxHelperRelaxBounds <- function(x,
                                  factor = 10) {
-  # Loosen very tight bounds to reduce curvature pathologies.
   lb <- OpenMx::omxGetParameters(
     model = x,
     fetch = "lbound"

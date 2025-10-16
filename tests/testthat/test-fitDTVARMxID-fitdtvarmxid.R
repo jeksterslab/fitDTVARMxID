@@ -32,7 +32,6 @@ lapply(
       psi_l = list(psi_l)
     )
     data <- as.data.frame(sim)
-    library(fitDTVARMxID)
     fit <- FitDTVARMxID(
       data = data,
       observed = paste0("y", seq_len(k)),
