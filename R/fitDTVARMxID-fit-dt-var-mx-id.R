@@ -322,7 +322,7 @@
 #' @param prefix Alphanumeric character string.
 #'   Prefix to use when naming intermediate files.
 #' @param seed Random seed for reproducibility.
-#' @param quiet Logical.
+#' @param silent Logical.
 #'   If `TRUE`, suppresses messages during the model fitting stage.
 #' @param ncores Positive integer.
 #'   Number of cores to use.
@@ -493,7 +493,7 @@ FitDTVARMxID <- function(data,
                          path = getwd(),
                          prefix = "FitDTVARMxID",
                          seed = 42,
-                         quiet = FALSE,
+                         silent = FALSE,
                          ncores = NULL,
                          clean = TRUE) {
   stopifnot(
@@ -503,7 +503,7 @@ FitDTVARMxID <- function(data,
       x = prefix
     )
   )
-  if (!quiet) {
+  if (!silent) {
     if (interactive()) {
       message(
         paste0(
@@ -581,7 +581,7 @@ FitDTVARMxID <- function(data,
     path = path,
     prefix = prefix,
     seed = seed,
-    quiet = quiet,
+    silent = silent,
     ncores = ncores,
     clean = clean
   )
@@ -652,7 +652,7 @@ FitDTVARMxID <- function(data,
     path = path,
     prefix = prefix,
     seed = seed,
-    quiet = quiet,
+    silent = silent,
     ncores = ncores,
     clean = clean
   )

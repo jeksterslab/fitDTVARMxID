@@ -6,6 +6,8 @@
                                  hess_tol = 1e-8,
                                  eps = 1e-6,
                                  factor = 10,
+                                 abs_bnd_tol = 1e-6,
+                                 rel_bnd_tol = 1e-4,
                                  quiet = FALSE,
                                  check_hess = TRUE) {
   tryCatch(
@@ -21,6 +23,8 @@
           hess_tol = hess_tol,
           eps = eps,
           factor = factor,
+          abs_bnd_tol = abs_bnd_tol,
+          rel_bnd_tol = rel_bnd_tol,
           quiet = quiet
         )
         saveRDS(object = fit, file = input)

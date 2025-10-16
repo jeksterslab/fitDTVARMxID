@@ -71,7 +71,7 @@ FitDTVARMxID(
   path = getwd(),
   prefix = "FitDTVARMxID",
   seed = 42,
-  quiet = FALSE,
+  silent = FALSE,
   ncores = NULL,
   clean = TRUE
 )
@@ -354,7 +354,7 @@ Prefix to use when naming intermediate files.}
 
 \item{seed}{Random seed for reproducibility.}
 
-\item{quiet}{Logical.
+\item{silent}{Logical.
 If \code{TRUE}, suppresses messages during the model fitting stage.}
 
 \item{ncores}{Positive integer.
