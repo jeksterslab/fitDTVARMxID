@@ -20,10 +20,9 @@ VignetteBuilder: knitr
 Depends: R (>= 4.5.0), OpenMx (>= 2.22.9)
 Imports: stats, methods, Matrix
 Suggests: knitr, rmarkdown, testthat, simStateSpace
-Remotes: jeksterslab/metaVAR
 RoxygenNote: 7.3.3.9000
 NeedsCompilation: no
-Packaged: 2025-10-15 15:16:24 UTC; root
+Packaged: 2025-10-16 01:25:17 UTC; root
 Author: Ivan Jacob Agaloos Pesigan [aut, cre, cph] (ORCID:
     <https://orcid.org/0000-0003-4818-8420>)
 Maintainer: Ivan Jacob Agaloos Pesigan <r.jeksterslab@gmail.com>
