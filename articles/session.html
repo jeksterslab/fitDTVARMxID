@@ -68,7 +68,11 @@ Agaloos Pesigan</h4>
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/fitDTVARMxID">fitDTVARMxID</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/fitDTVARMxID">fitDTVARMxID</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required package: OpenMx</span></span>
+<span><span class="co">#&gt; To take full advantage of multiple cores, use:</span></span>
+<span><span class="co">#&gt;   mxOption(key='Number of Threads', value=parallel::detectCores()) #now</span></span>
+<span><span class="co">#&gt;   Sys.setenv(OMP_NUM_THREADS=parallel::detectCores()) #before library(OpenMx)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="session">Session<a class="anchor" aria-label="anchor" href="#session"></a>
 </h2>
@@ -97,16 +101,15 @@ Agaloos Pesigan</h4>
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt; [1] metaVAR_0.0.0.9000      fitDTVARMxID_0.0.0.9000 OpenMx_2.22.9          </span></span>
-<span><span class="co">#&gt; [4] simStateSpace_1.2.12   </span></span>
+<span><span class="co">#&gt; [1] fitDTVARMxID_0.0.0.9000 OpenMx_2.22.9          </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;  [1] digest_0.6.37         xfun_0.53             Matrix_1.7-3         </span></span>
-<span><span class="co">#&gt;  [4] lattice_0.22-7        glue_1.8.0            knitr_1.50           </span></span>
-<span><span class="co">#&gt;  [7] parallel_4.5.1        RcppParallel_5.1.11-1 lifecycle_1.0.4      </span></span>
-<span><span class="co">#&gt; [10] cli_3.6.5.9000        rProject_0.0.21       grid_4.5.1           </span></span>
-<span><span class="co">#&gt; [13] compiler_4.5.1        tools_4.5.1           evaluate_1.0.5       </span></span>
-<span><span class="co">#&gt; [16] Rcpp_1.1.0            rlang_1.1.6           MASS_7.3-65</span></span></code></pre></div>
+<span><span class="co">#&gt;  [4] lattice_0.22-7        knitr_1.50            parallel_4.5.1       </span></span>
+<span><span class="co">#&gt;  [7] RcppParallel_5.1.11-1 lifecycle_1.0.4       cli_3.6.5.9000       </span></span>
+<span><span class="co">#&gt; [10] rProject_0.0.21       grid_4.5.1            compiler_4.5.1       </span></span>
+<span><span class="co">#&gt; [13] tools_4.5.1           evaluate_1.0.5        Rcpp_1.1.0           </span></span>
+<span><span class="co">#&gt; [16] rlang_1.1.6           MASS_7.3-65</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="packages">Packages<a class="anchor" aria-label="anchor" href="#packages"></a>
@@ -115,7 +118,6 @@ Agaloos Pesigan</h4>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html" class="external-link">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Package"</span>, <span class="st">"Version"</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt;                   Package             Version      </span></span>
 <span><span class="co">#&gt; fitDTVARMxID      "fitDTVARMxID"      "0.0.0.9000" </span></span>
-<span><span class="co">#&gt; metaVAR           "metaVAR"           "0.0.0.9000" </span></span>
 <span><span class="co">#&gt; simStateSpace     "simStateSpace"     "1.2.12"     </span></span>
 <span><span class="co">#&gt; abind             "abind"             "1.4-8"      </span></span>
 <span><span class="co">#&gt; Amelia            "Amelia"            "1.8.3"      </span></span>
@@ -518,10 +520,10 @@ Agaloos Pesigan</h4>
 <span><span class="co">#&gt; Core(s) per socket:                   12</span></span>
 <span><span class="co">#&gt; Socket(s):                            2</span></span>
 <span><span class="co">#&gt; Stepping:                             1</span></span>
-<span><span class="co">#&gt; CPU(s) scaling MHz:                   69%</span></span>
+<span><span class="co">#&gt; CPU(s) scaling MHz:                   67%</span></span>
 <span><span class="co">#&gt; CPU max MHz:                          2900.0000</span></span>
 <span><span class="co">#&gt; CPU min MHz:                          1200.0000</span></span>
-<span><span class="co">#&gt; BogoMIPS:                             4390.09</span></span>
+<span><span class="co">#&gt; BogoMIPS:                             4389.66</span></span>
 <span><span class="co">#&gt; Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 invpcid_single pti ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm cqm rdt_a rdseed adx smap intel_pt xsaveopt cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts md_clear flush_l1d</span></span>
 <span><span class="co">#&gt; L1d cache:                            768 KiB (24 instances)</span></span>
 <span><span class="co">#&gt; L1i cache:                            768 KiB (24 instances)</span></span>
@@ -549,9 +551,9 @@ Agaloos Pesigan</h4>
 <h2 id="memory">Memory<a class="anchor" aria-label="anchor" href="#memory"></a>
 </h2>
 <pre><code><span><span class="co">#&gt;                total        used        free      shared  buff/cache   available</span></span>
-<span><span class="co">#&gt; Mem:           125Gi        12Gi        59Gi       5.5Gi        60Gi       113Gi</span></span>
+<span><span class="co">#&gt; Mem:           125Gi       9.8Gi        62Gi       5.6Gi        59Gi       116Gi</span></span>
 <span><span class="co">#&gt; Swap:             0B          0B          0B</span></span>
-<span><span class="co">#&gt; Total:         125Gi        12Gi        59Gi</span></span></code></pre>
+<span><span class="co">#&gt; Total:         125Gi       9.8Gi        62Gi</span></span></code></pre>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
