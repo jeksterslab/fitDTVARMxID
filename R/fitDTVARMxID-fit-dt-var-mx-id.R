@@ -492,7 +492,7 @@ FitDTVARMxID <- function(data,
                          overwrite = FALSE,
                          path = getwd(),
                          prefix = "FitDTVARMxID",
-                         seed = 42,
+                         seed = NULL,
                          silent = FALSE,
                          ncores = NULL,
                          clean = TRUE) {
