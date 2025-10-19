@@ -5,6 +5,7 @@
 #' @param means Logical.
 #'   If `means = TRUE`, return means.
 #'   Otherwise, the function returns raw estimates.
+#' @param digits Integer indicating the number of decimal places to display.
 #' @param ... further arguments.
 #' @inheritParams coef.dtvarmxid
 #'
@@ -24,12 +25,12 @@ print.dtvarmxid <- function(x,
                             hess_tol = 1e-8,
                             vanishing_theta = TRUE,
                             theta_tol = 0.001,
+                            digits = 4,
                             ...) {
-  out <- do.call(
-    what = "rbind",
-    args = lapply(
-      X = x$output,
-      FUN = coef,
+  print.summary.dtvarmxid(
+    summary.dtvarmxid(
+      object = x,
+      means = means,
       alpha = alpha,
       beta = beta,
       nu = nu,
@@ -39,16 +40,10 @@ print.dtvarmxid <- function(x,
       grad_tol = grad_tol,
       hess_tol = hess_tol,
       vanishing_theta = vanishing_theta,
-      theta_tol = theta_tol
+      theta_tol = theta_tol,
+      digits = digits
     )
   )
-  if (means) {
-    cat("\nMeans of the estimated paramaters per individual.\n")
-    out <- colMeans(out)
-  } else {
-    cat("\nEstimated paramaters per individual.\n")
-  }
-  base::print(out)
 }
 
 #' Summary Method for Object of Class `dtvarmxid`
@@ -58,6 +53,7 @@ print.dtvarmxid <- function(x,
 #' @param means Logical.
 #'   If `means = TRUE`, return means.
 #'   Otherwise, the function returns raw estimates.
+#' @param digits Integer indicating the number of decimal places to display.
 #' @param ... further arguments.
 #' @inheritParams coef.dtvarmxid
 #'
@@ -77,6 +73,7 @@ summary.dtvarmxid <- function(object,
                               hess_tol = 1e-8,
                               vanishing_theta = TRUE,
                               theta_tol = 0.001,
+                              digits = 4,
                               ...) {
   out <- do.call(
     what = "rbind",
@@ -96,20 +93,98 @@ summary.dtvarmxid <- function(object,
     )
   )
   if (means) {
-    # nocov start
-    if (interactive()) {
-      cat("\nMeans of the estimated paramaters per individual.\n")
-    }
-    # nocov end
     out <- colMeans(out)
-  } else {
-    # nocov start
-    if (interactive()) {
-      cat("\nEstimated paramaters per individual.\n")
-    }
-    # nocov end
   }
+  print_summary <- round(
+    x = out,
+    digits = digits
+  )
+  attr(
+    x = out,
+    which = "print_summary"
+  ) <- print_summary
+  attr(
+    x = out,
+    which = "fit"
+  ) <- object
+  attr(
+    x = out,
+    which = "means"
+  ) <- means
+  attr(
+    x = out,
+    which = "alpha"
+  ) <- alpha
+  attr(
+    x = out,
+    which = "beta"
+  ) <- beta
+  attr(
+    x = out,
+    which = "nu"
+  ) <- nu
+  attr(
+    x = out,
+    which = "psi"
+  ) <- psi
+  attr(
+    x = out,
+    which = "theta"
+  ) <- theta
+  attr(
+    x = out,
+    which = "converged"
+  ) <- converged
+  attr(
+    x = out,
+    which = "grad_tol"
+  ) <- grad_tol
+  attr(
+    x = out,
+    which = "hess_tol"
+  ) <- hess_tol
+  attr(
+    x = out,
+    which = "vanishing_theta"
+  ) <- vanishing_theta
+  attr(
+    x = out,
+    which = "theta_tol"
+  ) <- theta_tol
+  attr(
+    x = out,
+    which = "digits"
+  ) <- digits
+  class(out) <- "summary.dtvarmxid"
   out
+}
+
+#' @noRd
+#' @keywords internal
+#' @exportS3Method print summary.dtvarmxid
+print.summary.dtvarmxid <- function(x,
+                                    ...) {
+  print_summary <- attr(
+    x = x,
+    which = "print_summary"
+  )
+  means <- attr(
+    x = x,
+    which = "means"
+  )
+  object <- attr(
+    x = x,
+    which = "fit"
+  )
+  cat("Call:\n")
+  base::print(object$call)
+  if (means) {
+    cat("\nMeans of the estimated paramaters per individual.\n")
+  } else {
+    cat("\nEstimated paramaters per individual.\n")
+  }
+  print(print_summary)
+  invisible(x)
 }
 
 #' Parameter Estimates

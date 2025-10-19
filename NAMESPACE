@@ -3,6 +3,7 @@
 S3method(coef,dtvarmxid)
 S3method(converged,dtvarmxid)
 S3method(print,dtvarmxid)
+S3method(print,summary.dtvarmxid)
 S3method(summary,dtvarmxid)
 S3method(vcov,dtvarmxid)
 export(FitDTVARMxID)

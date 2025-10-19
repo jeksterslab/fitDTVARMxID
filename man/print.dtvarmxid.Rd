@@ -17,6 +17,7 @@
   hess_tol = 1e-08,
   vanishing_theta = TRUE,
   theta_tol = 0.001,
+  digits = 4,
   ...
 )
 }
@@ -76,6 +77,8 @@ if \code{converged = TRUE}.}
 \item{theta_tol}{Numeric.
 Tolerance for vanishing theta test
 if \code{converged} and \code{theta_tol} are \code{TRUE}.}
+
+\item{digits}{Integer indicating the number of decimal places to display.}
 
 \item{...}{further arguments.}
 }
