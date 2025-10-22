@@ -1,5 +1,5 @@
 ---
-title: "fitDTVARMxID: Fit the Discrete-Time Vector Autoregressive Model"
+title: "fitDTVARMxID: Fit the Discrete-Time Vector Autoregressive Model for Multiple Individuals"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
 bibliography: "vignettes.bib"
@@ -9,7 +9,7 @@ nocite: |
   @Neale-Hunter-Pritikin-etal-2015
   @Hunter-2017
 vignette: >
-  %\VignetteIndexEntry{fitDTVARMxID: Fit the Discrete-Time Vector Autoregressive Model}
+  %\VignetteIndexEntry{fitDTVARMxID: Fit the Discrete-Time Vector Autoregressive Model for Multiple Individuals}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -33,7 +33,7 @@ knitr::opts_chunk$set(
 
 ## Description
 
-Fit the discrete-time vector autoregressive model using the `OpenMx` package.
+Fit the discrete-time vector autoregressive model for multiple individuals using the `OpenMx` package.
 
 ## Installation
 

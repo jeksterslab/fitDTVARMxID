@@ -32,7 +32,7 @@ knitr::opts_chunk$set(
 
 ## Description
 
-Fit the discrete-time vector autoregressive model using the `OpenMx` package.
+Fit the discrete-time vector autoregressive model for multiple individuals using the `OpenMx` package.
 
 ## Installation
 

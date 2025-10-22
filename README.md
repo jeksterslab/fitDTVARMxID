@@ -1,7 +1,7 @@
 fitDTVARMxID
 ================
 Ivan Jacob Agaloos Pesigan
-2025-10-19
+2025-10-22
 
 <!-- README.md is generated from .setup/readme/README.Rmd. Please edit that file -->
 
@@ -16,8 +16,8 @@ Ivan Jacob Agaloos Pesigan
 
 ## Description
 
-Fit the discrete-time vector autoregressive model using the `OpenMx`
-package.
+Fit the discrete-time vector autoregressive model for multiple
+individuals using the `OpenMx` package.
 
 ## Installation
 
