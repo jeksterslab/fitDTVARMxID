@@ -95,68 +95,27 @@ summary.dtvarmxid <- function(object,
   if (means) {
     out <- colMeans(out)
   }
-  print_summary <- round(
-    x = out,
-    digits = digits
+  structure(
+    .Data = out,
+    fit = object,
+    means = means,
+    alpha = alpha,
+    beta = beta,
+    nu = nu,
+    psi = psi,
+    theta = theta,
+    converged = converged,
+    grad_tol = grad_tol,
+    hess_tol = hess_tol,
+    vanishing_theta = vanishing_theta,
+    theta_tol = theta_tol,
+    digits = digits,
+    print_summary = round(
+      x = out,
+      digits = digits
+    ),
+    class = "summary.dtvarmxid"
   )
-  attr(
-    x = out,
-    which = "print_summary"
-  ) <- print_summary
-  attr(
-    x = out,
-    which = "fit"
-  ) <- object
-  attr(
-    x = out,
-    which = "means"
-  ) <- means
-  attr(
-    x = out,
-    which = "alpha"
-  ) <- alpha
-  attr(
-    x = out,
-    which = "beta"
-  ) <- beta
-  attr(
-    x = out,
-    which = "nu"
-  ) <- nu
-  attr(
-    x = out,
-    which = "psi"
-  ) <- psi
-  attr(
-    x = out,
-    which = "theta"
-  ) <- theta
-  attr(
-    x = out,
-    which = "converged"
-  ) <- converged
-  attr(
-    x = out,
-    which = "grad_tol"
-  ) <- grad_tol
-  attr(
-    x = out,
-    which = "hess_tol"
-  ) <- hess_tol
-  attr(
-    x = out,
-    which = "vanishing_theta"
-  ) <- vanishing_theta
-  attr(
-    x = out,
-    which = "theta_tol"
-  ) <- theta_tol
-  attr(
-    x = out,
-    which = "digits"
-  ) <- digits
-  class(out) <- "summary.dtvarmxid"
-  out
 }
 
 #' @noRd
