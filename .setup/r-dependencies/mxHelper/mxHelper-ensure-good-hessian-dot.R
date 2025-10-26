@@ -1,7 +1,7 @@
 .MxHelperEnsureGoodHessian <- function(model,
-                                       tries_explore = 1000,
-                                       tries_local = 1000,
-                                       max_attempts = 1000,
+                                       tries_explore = 100,
+                                       tries_local = 100,
+                                       max_attempts = 10,
                                        grad_tol = 1e-2,
                                        hess_tol = 1e-8,
                                        eps = 1e-6,
@@ -45,10 +45,10 @@
     )
     fit <- OpenMx::mxTryHard(
       model = fit,
-      extraTries = tries_explore,
+      extraTries = tries_local,
       silent = silent,
       jitterDistrib = "rnorm",
-      scale = 0.10,
+      scale = 0.05,
       checkHess = FALSE
     )
     if (!silent) {
@@ -105,24 +105,25 @@
           x = fit,
           factor = factor
         )
+        fit <- OpenMx::mxTryHardWideSearch(
+          model = fit,
+          extraTries = tries_explore,
+          checkHess = FALSE,
+          silent = silent
+        )
       }
-      fit <- OpenMx::mxTryHardWideSearch(
-        model = fit,
-        extraTries = tries_explore,
-        checkHess = FALSE,
-        silent = silent
-      )
       fit <- OpenMx::mxTryHard(
         model = fit,
-        extraTries = tries_explore,
+        extraTries = tries_local,
         silent = silent,
         jitterDistrib = "rnorm",
-        scale = 0.10,
+        scale = 0.05,
         checkHess = FALSE
       )
     }
-    result
+    out <- result
   } else {
-    model
+    out <- model
   }
+  out
 }
