@@ -485,10 +485,17 @@ converged.dtvarmxid <- function(object,
                    hess_tol,
                    vanishing_theta,
                    theta_tol) {
-      code <- !(
-        is.null(i$output) ||
-          is.null(i$output$status) ||
-          i$output$status$code != 0L
+      code <- tryCatch(
+        {
+          !(
+            is.null(i$output) ||
+              is.null(i$output$status) ||
+              i$output$status$code != 0L
+          )
+        },
+        error = function(e) {
+          FALSE
+        }
       )
       good_grad <- .MxHelperIsGoodFit(
         x = i,
