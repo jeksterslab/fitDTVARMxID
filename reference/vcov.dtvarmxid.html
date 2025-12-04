@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">fitDTVARMxID</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,6 +54,7 @@
 <span>  hess_tol <span class="op">=</span> <span class="fl">1e-08</span>,</span>
 <span>  vanishing_theta <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  theta_tol <span class="op">=</span> <span class="fl">0.001</span>,</span>
+<span>  robust <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -134,6 +135,12 @@ if <code>converged = TRUE</code>.</p></dd>
 <dd><p>Numeric.
 Tolerance for vanishing theta test
 if <code>converged</code> and <code>theta_tol</code> are <code>TRUE</code>.</p></dd>
+
+
+<dt id="arg-robust">robust<a class="anchor" aria-label="anchor" href="#arg-robust"></a></dt>
+<dd><p>Logical.
+If <code>TRUE</code>, use robust (sandwich) sampling variance-covariance matrix.
+If <code>FALSE</code>, use normal theory sampling variance-covariance matrix.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>

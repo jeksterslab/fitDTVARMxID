@@ -18,6 +18,7 @@ vcov(
   hess_tol = 1e-08,
   vanishing_theta = TRUE,
   theta_tol = 0.001,
+  robust = FALSE,
   ...
 )
 ```
@@ -78,6 +79,12 @@ vcov(
 
   Numeric. Tolerance for vanishing theta test if `converged` and
   `theta_tol` are `TRUE`.
+
+- robust:
+
+  Logical. If `TRUE`, use robust (sandwich) sampling variance-covariance
+  matrix. If `FALSE`, use normal theory sampling variance-covariance
+  matrix.
 
 - ...:
 
