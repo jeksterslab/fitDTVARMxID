@@ -418,12 +418,12 @@ vcov.dtvarmxid <- function(object,
                    idx,
                    robust) {
       if (robust) {
-        robust <- OpenMx::imxRobustSE(
+        out <- OpenMx::imxRobustSE(
           model = x,
           details = TRUE
         )
-        x$output$vcov <- robust$cov
-        x$output$standardErrors <- robust$SE
+        x@output$vcov <- out$cov
+        x@output$standardErrors <- out$SE
       }
       vcov(x)[idx, idx, drop = FALSE]
     },
