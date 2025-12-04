@@ -351,6 +351,39 @@ vcov.dtvarmxid <- function(object,
                            robust = FALSE,
                            ...) {
   fit <- object$output
+  if (robust) {
+    if (is.null(object$robust)) {
+      fit <- lapply(
+        X = fit,
+        FUN = function(i) {
+          utils::capture.output(
+            suppressMessages(
+              suppressWarnings(
+                out <- OpenMx::imxRobustSE(
+                  model = i,
+                  details = TRUE
+                )
+              )
+            )
+          )
+          i@output$vcov <- out$cov
+          i@output$standardErrors <- out$SE
+          i
+        }
+      )
+    } else {
+      fit <- mapply(
+        FUN = function(i,
+                       vcovs) {
+          i@output$vcov <- vcovs$cov
+          i@output$standardErrors <- vcovs$SE
+          i
+        },
+        i = fit,
+        vcovs = object$robust
+      )
+    }
+  }
   fit <- fit[
     which(
       converged.dtvarmxid(
@@ -415,20 +448,10 @@ vcov.dtvarmxid <- function(object,
   lapply(
     X = fit,
     FUN = function(x,
-                   idx,
-                   robust) {
-      if (robust) {
-        out <- OpenMx::imxRobustSE(
-          model = x,
-          details = TRUE
-        )
-        x@output$vcov <- out$cov
-        x@output$standardErrors <- out$SE
-      }
+                   idx) {
       vcov(x)[idx, idx, drop = FALSE]
     },
-    idx = idx,
-    robust = robust
+    idx = idx
   )
 }
 

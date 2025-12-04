@@ -60,6 +60,7 @@ FitDTVARMxID(
   sigma0_l_values = NULL,
   sigma0_l_lbound = NULL,
   sigma0_l_ubound = NULL,
+  robust = FALSE,
   tries_explore = 100,
   tries_local = 10,
   max_attempts = 10,
@@ -309,6 +310,9 @@ If \code{NULL}, no lower bounds are set.}
 with upper bounds for \code{sigma0_l}.
 If \code{NULL}, no upper bounds are set.}
 
+\item{robust}{Logical.
+If \code{TRUE}, calculate robust (sandwich) sampling variance-covariance matrix.}
+
 \item{tries_explore}{Integer.
 Number of extra tries for the wide exploration
 phase using \code{OpenMx::mxTryHardWideSearch()} with \code{checkHess = FALSE}.}
@@ -371,6 +375,9 @@ a list with the following elements:
 \item{args}{List of function arguments.}
 \item{fun}{Function used ("FitDTVARMxID").}
 \item{output}{A list of fitted OpenMx models.}
+\item{robust}{A list of output from \code{\link[OpenMx:imxRobustSE]{OpenMx::imxRobustSE()}}
+with argument \code{details = TRUE} if \code{random = TRUE}
+for each \code{id}.}
 }
 }
 \description{
