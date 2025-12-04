@@ -663,19 +663,19 @@ FitDTVARMxID <- function(data,
     clean = clean
   )
   if (robust) {
-    robust <- .Robust(
+    sandwich <- .Robust(
       fit = output,
       ncores = ncores
     )
   } else {
-    robust <- NULL
+    sandwich <- NULL
   }
   out <- list(
     call = match.call(),
     args = args,
     fun = "FitDTVARMxID",
     output = output,
-    robust = robust
+    robust = sandwich
   )
   class(out) <- c(
     "dtvarmxid",

@@ -359,28 +359,28 @@ vcov.dtvarmxid <- function(object,
           utils::capture.output(
             suppressMessages(
               suppressWarnings(
-                out <- OpenMx::imxRobustSE(
+                sandwich <- OpenMx::imxRobustSE(
                   model = i,
                   details = TRUE
                 )
               )
             )
           )
-          i@output$vcov <- out$cov
-          i@output$standardErrors <- out$SE
+          i@output$vcov <- sandwich$cov
+          i@output$standardErrors <- sandwich$SE
           i
         }
       )
     } else {
       fit <- mapply(
         FUN = function(i,
-                       vcovs) {
-          i@output$vcov <- vcovs$cov
-          i@output$standardErrors <- vcovs$SE
+                       sandwich) {
+          i@output$vcov <- sandwich$cov
+          i@output$standardErrors <- sandwich$SE
           i
         },
         i = fit,
-        vcovs = object$robust
+        sandwich = object$robust
       )
     }
   }
