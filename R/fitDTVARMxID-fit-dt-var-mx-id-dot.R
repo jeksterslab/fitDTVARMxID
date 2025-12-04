@@ -74,7 +74,8 @@
     OpenMx::mxOption(
       key = "Number of Threads",
       value = threads
-    )
+    ),
+    add = TRUE
   )
   model <- .FitDTVARMxIDBuildModelID(
     data = data,

@@ -288,6 +288,8 @@
 #' @param sigma0_l_ubound Numeric matrix
 #'   with upper bounds for `sigma0_l`.
 #'   If `NULL`, no upper bounds are set.
+#' @param robust Logical.
+#'   If `TRUE`, calculate robust (sandwich) sampling variance-covariance matrix.
 #' @param tries_explore Integer.
 #'   Number of extra tries for the wide exploration
 #'   phase using `OpenMx::mxTryHardWideSearch()` with `checkHess = FALSE`.
@@ -336,6 +338,9 @@
 #'     \item{args}{List of function arguments.}
 #'     \item{fun}{Function used ("FitDTVARMxID").}
 #'     \item{output}{A list of fitted OpenMx models.}
+#'     \item{robust}{A list of output from [OpenMx::imxRobustSE()]
+#'         with argument `details = TRUE` if `random = TRUE`
+#'         for each `id`.}
 #'   }
 #'
 #' @examples
@@ -482,6 +487,7 @@ FitDTVARMxID <- function(data,
                          sigma0_l_values = NULL,
                          sigma0_l_lbound = NULL,
                          sigma0_l_ubound = NULL,
+                         robust = FALSE,
                          tries_explore = 100,
                          tries_local = 10,
                          max_attempts = 10,
@@ -656,11 +662,20 @@ FitDTVARMxID <- function(data,
     ncores = ncores,
     clean = clean
   )
+  if (robust) {
+    robust <- .Robust(
+      fit = output,
+      ncores = ncores
+    )
+  } else {
+    robust <- NULL
+  }
   out <- list(
     call = match.call(),
     args = args,
     fun = "FitDTVARMxID",
-    output = output
+    output = output,
+    robust = robust
   )
   class(out) <- c(
     "dtvarmxid",
