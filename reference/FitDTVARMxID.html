@@ -103,6 +103,7 @@ for each unit ID.</p>
 <span>  sigma0_l_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  sigma0_l_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  sigma0_l_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  robust <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  tries_explore <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>  tries_local <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>  max_attempts <span class="op">=</span> <span class="fl">10</span>,</span>
@@ -466,6 +467,11 @@ with upper bounds for <code>sigma0_l</code>.
 If <code>NULL</code>, no upper bounds are set.</p></dd>
 
 
+<dt id="arg-robust">robust<a class="anchor" aria-label="anchor" href="#arg-robust"></a></dt>
+<dd><p>Logical.
+If <code>TRUE</code>, calculate robust (sandwich) sampling variance-covariance matrix.</p></dd>
+
+
 <dt id="arg-tries-explore">tries_explore<a class="anchor" aria-label="anchor" href="#arg-tries-explore"></a></dt>
 <dd><p>Integer.
 Number of extra tries for the wide exploration
@@ -562,6 +568,11 @@ a list with the following elements:</p><dl><dt>call</dt>
 
 <dt>output</dt>
 <dd><p>A list of fitted OpenMx models.</p></dd>
+
+<dt>robust</dt>
+<dd><p>A list of output from <code><a href="https://rdrr.io/pkg/OpenMx/man/imxRobustSE.html" class="external-link">OpenMx::imxRobustSE()</a></code>
+with argument <code>details = TRUE</code> if <code>random = TRUE</code>
+for each <code>id</code>.</p></dd>
 
 
 </dl></div>

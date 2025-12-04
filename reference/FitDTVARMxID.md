@@ -62,6 +62,7 @@ FitDTVARMxID(
   sigma0_l_values = NULL,
   sigma0_l_lbound = NULL,
   sigma0_l_ubound = NULL,
+  robust = FALSE,
   tries_explore = 100,
   tries_local = 10,
   max_attempts = 10,
@@ -366,6 +367,11 @@ FitDTVARMxID(
   Numeric matrix with upper bounds for `sigma0_l`. If `NULL`, no upper
   bounds are set.
 
+- robust:
+
+  Logical. If `TRUE`, calculate robust (sandwich) sampling
+  variance-covariance matrix.
+
 - tries_explore:
 
   Integer. Number of extra tries for the wide exploration phase using
@@ -457,6 +463,12 @@ following elements:
 - output:
 
   A list of fitted OpenMx models.
+
+- robust:
+
+  A list of output from
+  [`OpenMx::imxRobustSE()`](https://rdrr.io/pkg/OpenMx/man/imxRobustSE.html)
+  with argument `details = TRUE` if `random = TRUE` for each `id`.
 
 ## Details
 
