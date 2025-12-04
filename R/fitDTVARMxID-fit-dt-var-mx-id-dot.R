@@ -191,7 +191,7 @@
       }
     } else {
       cl <- parallel::makeCluster(ncores)
-      parallel::clusterEvalQ(cl, library(OpenMx))
+      parallel::clusterEvalQ(cl = cl, library(OpenMx))
       if (!is.null(seed)) {
         parallel::clusterSetRNGStream(
           cl = cl,
@@ -199,7 +199,8 @@
         )
       }
       on.exit(
-        parallel::stopCluster(cl = cl)
+        parallel::stopCluster(cl = cl),
+        add = TRUE
       )
       check_hess <- c(
         FALSE,
