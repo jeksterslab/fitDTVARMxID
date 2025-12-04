@@ -16,6 +16,7 @@
   hess_tol = 1e-08,
   vanishing_theta = TRUE,
   theta_tol = 0.001,
+  robust = FALSE,
   ...
 )
 }
@@ -71,6 +72,10 @@ if \code{converged = TRUE}.}
 \item{theta_tol}{Numeric.
 Tolerance for vanishing theta test
 if \code{converged} and \code{theta_tol} are \code{TRUE}.}
+
+\item{robust}{Logical.
+If \code{TRUE}, use robust (sandwich) sampling variance-covariance matrix.
+If \code{FALSE}, use normal theory sampling variance-covariance matrix.}
 
 \item{...}{additional arguments.}
 }

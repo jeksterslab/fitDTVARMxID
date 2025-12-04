@@ -327,6 +327,9 @@ coef.dtvarmxid <- function(object,
 #' @param theta_tol Numeric.
 #'   Tolerance for vanishing theta test
 #'   if `converged` and `theta_tol` are `TRUE`.
+#' @param robust Logical.
+#'   If `TRUE`, use robust (sandwich) sampling variance-covariance matrix.
+#'   If `FALSE`, use normal theory sampling variance-covariance matrix.
 #' @param ... additional arguments.
 #' @return Returns a list of sampling variance-covariance matrices.
 #'
@@ -345,6 +348,7 @@ vcov.dtvarmxid <- function(object,
                            hess_tol = 1e-8,
                            vanishing_theta = TRUE,
                            theta_tol = 0.001,
+                           robust = FALSE,
                            ...) {
   fit <- object$output
   fit <- fit[
@@ -411,10 +415,20 @@ vcov.dtvarmxid <- function(object,
   lapply(
     X = fit,
     FUN = function(x,
-                   idx) {
+                   idx,
+                   robust) {
+      if (robust) {
+        robust <- OpenMx::imxRobustSE(
+          model = x,
+          details = TRUE
+        )
+        x$output$vcov <- robust$cov
+        x$output$standardErrors <- robust$SE
+      }
       vcov(x)[idx, idx, drop = FALSE]
     },
-    idx = idx
+    idx = idx,
+    robust = robust
   )
 }
 
