@@ -211,18 +211,20 @@ coef.dtvarmxid <- function(object,
                            theta_tol = 0.001,
                            ...) {
   fit <- object$output
-  fit <- fit[
-    which(
-      converged.dtvarmxid(
-        object = object,
-        grad_tol = grad_tol,
-        hess_tol = hess_tol,
-        vanishing_theta = vanishing_theta,
-        theta_tol = theta_tol,
-        prop = FALSE
+  if (converged) {
+    fit <- fit[
+      which(
+        converged.dtvarmxid(
+          object = object,
+          grad_tol = grad_tol,
+          hess_tol = hess_tol,
+          vanishing_theta = vanishing_theta,
+          theta_tol = theta_tol,
+          prop = FALSE
+        )
       )
-    )
-  ]
+    ]
+  }
   parnames <- names(
     coef(fit[[1]])
   )
@@ -384,18 +386,20 @@ vcov.dtvarmxid <- function(object,
       )
     }
   }
-  fit <- fit[
-    which(
-      converged.dtvarmxid(
-        object = object,
-        grad_tol = grad_tol,
-        hess_tol = hess_tol,
-        vanishing_theta = vanishing_theta,
-        theta_tol = theta_tol,
-        prop = FALSE
+  if (converged) {
+    fit <- fit[
+      which(
+        converged.dtvarmxid(
+          object = object,
+          grad_tol = grad_tol,
+          hess_tol = hess_tol,
+          vanishing_theta = vanishing_theta,
+          theta_tol = theta_tol,
+          prop = FALSE
+        )
       )
-    )
-  ]
+    ]
+  }
   parnames <- names(
     coef(fit[[1]])
   )
