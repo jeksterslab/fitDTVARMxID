@@ -3,10 +3,6 @@
 ``` r
 
 library(fitDTVARMxID)
-#> Loading required package: OpenMx
-#> To take full advantage of multiple cores, use:
-#>   mxOption(key='Number of Threads', value=parallel::detectCores()) #now
-#>   Sys.setenv(OMP_NUM_THREADS=parallel::detectCores()) #before library(OpenMx)
 ```
 
 ## Session
