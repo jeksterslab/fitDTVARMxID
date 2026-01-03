@@ -23,7 +23,7 @@ reference:
   - has_keyword("methods")
 
 articles:
-- title: Example
+- title: Example with Fixed Parameters
   contents:
   - example
 - title: Session Information

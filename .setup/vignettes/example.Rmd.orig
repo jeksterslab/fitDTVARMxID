@@ -18,7 +18,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup-threads, include=FALSE}
+```{r include=FALSE}
 Sys.setenv(
   OMP_NUM_THREADS = "1",
   MKL_NUM_THREADS = "1",
