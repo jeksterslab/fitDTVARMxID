@@ -23,6 +23,9 @@ reference:
   - has_keyword("methods")
 
 articles:
+- title: Example
+  contents:
+  - example
 - title: Session Information
   contents:
   - session
