@@ -1,6 +1,6 @@
 # Articles
 
-### Example
+### Example with Fixed Parameters
 
 - [The State Space
   Model](https://github.com/jeksterslab/fitDTVARMxID/articles/example.md):
