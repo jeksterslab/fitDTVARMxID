@@ -1,6 +1,6 @@
 # fitDTVARMxID
 
-Ivan Jacob Agaloos Pesigan 2026-01-02
+Ivan Jacob Agaloos Pesigan 2026-01-03
 
 ## Description
 
@@ -74,6 +74,11 @@ computing*. R Foundation for Statistical Computing.
   : Sampling Covariance Matrix of the Parameter Estimates
 
 # Articles
+
+### Example
+
+- [The State Space
+  Model](https://github.com/jeksterslab/fitDTVARMxID/articles/example.md):
 
 ### Session Information
 
