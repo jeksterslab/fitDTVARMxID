@@ -1,7 +1,7 @@
 ---
 title: "The State Space Model"
 author: "Ivan Jacob Agaloos Pesigan"
-date: "2026-01-03"
+date: "2026-01-07"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -584,9 +584,9 @@ summary(fit, means = TRUE)
 #>    beta_1_3    beta_2_3    beta_3_3      nu_1_1      nu_2_1      nu_3_1 
 #>     -0.0011     -0.0040      0.4916      0.0010      0.0011     -0.0003 
 #>   psi_l_2_1   psi_l_3_1   psi_l_3_2   psi_d_1_1   psi_d_2_1   psi_d_3_1 
-#>      0.0006      0.0094      0.0061     -2.2785     -2.3041     -2.3120 
+#>      0.0006      0.0094      0.0061     -2.2785     -2.3041     -2.3111 
 #> theta_d_1_1 theta_d_2_1 theta_d_3_1 
-#>     -1.5645     -1.5471     -1.5597
+#>     -1.5642     -1.5471     -1.5597
 ```
 
 ## References
