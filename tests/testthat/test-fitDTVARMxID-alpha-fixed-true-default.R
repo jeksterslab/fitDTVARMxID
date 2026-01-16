@@ -15,20 +15,21 @@ lapply(
       alpha_values = NULL,
       alpha_lbound = NULL,
       alpha_ubound = NULL,
-      name = "alpha"
+      name_alpha = "alpha",
+      center = FALSE
     )
-    alpha_name <- alpha@name
-    alpha_values <- alpha@values
-    alpha_labels <- alpha@labels
-    alpha_free <- alpha@free
-    alpha_lbound <- alpha@lbound
-    alpha_ubound <- alpha@ubound
+    alpha_name <- alpha[[1]]@name
+    alpha_values <- alpha[[1]]@values
+    alpha_labels <- alpha[[1]]@labels
+    alpha_free <- alpha[[1]]@free
+    alpha_lbound <- alpha[[1]]@lbound
+    alpha_ubound <- alpha[[1]]@ubound
     testthat::test_that(
       paste(text, "class"),
       {
         testthat::skip_on_cran()
         testthat::expect_true(
-          class(alpha) == "ZeroMatrix"
+          class(alpha[[1]]) == "ZeroMatrix"
         )
       }
     )

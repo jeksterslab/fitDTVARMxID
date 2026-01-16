@@ -6,6 +6,7 @@
                                       alpha_values,
                                       alpha_lbound,
                                       alpha_ubound,
+                                      center,
                                       beta_fixed,
                                       beta_free,
                                       beta_values,
@@ -108,7 +109,9 @@
         alpha_values = alpha_values,
         alpha_lbound = alpha_lbound,
         alpha_ubound = alpha_ubound,
-        name = "alpha"
+        name_alpha = "alpha",
+        name_beta = "beta",
+        center = center
       )
     }
   )
@@ -209,7 +212,8 @@
         mu0_ubound = mu0_ubound,
         name = "mu0",
         name_beta = "beta",
-        name_alpha = "alpha"
+        name_alpha = "alpha",
+        center = center
       )
     }
   )

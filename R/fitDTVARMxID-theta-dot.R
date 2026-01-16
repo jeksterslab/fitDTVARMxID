@@ -15,7 +15,7 @@
   # R
   # measurement error
   if (theta_fixed) {
-    out <- .FitDTVARMxIDThetaFixed(
+    theta <- .FitDTVARMxIDThetaFixed(
       k = k,
       observed = observed,
       theta_diag = theta_diag,
@@ -25,7 +25,7 @@
     )
   } else {
     if (theta_diag) {
-      out <- .FitDTVARMxIDThetaDiag(
+      theta <- .FitDTVARMxIDThetaDiag(
         k = k,
         observed = observed,
         theta_d_free = theta_d_free,
@@ -36,7 +36,7 @@
         name = name
       )
     } else {
-      out <- .FitDTVARMxIDThetaSym(
+      theta <- .FitDTVARMxIDThetaSym(
         k = k,
         observed = observed,
         theta_d_free = theta_d_free,
@@ -52,5 +52,11 @@
       )
     }
   }
-  out
+  c(
+    theta,
+    OpenMx::mxAlgebraFromString(
+      algString = name,
+      name = "R"
+    )
+  )
 }

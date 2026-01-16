@@ -13,7 +13,7 @@
   # Q
   # process noise
   if (psi_diag) {
-    out <- .FitDTVARMxIDPsiDiag(
+    psi <- .FitDTVARMxIDPsiDiag(
       k = k,
       statenames = statenames,
       psi_d_free = psi_d_free,
@@ -23,7 +23,7 @@
       name = name
     )
   } else {
-    out <- .FitDTVARMxIDPsiSym(
+    psi <- .FitDTVARMxIDPsiSym(
       k = k,
       statenames = statenames,
       psi_d_free = psi_d_free,
@@ -37,5 +37,11 @@
       name = name
     )
   }
-  out
+  c(
+    psi,
+    OpenMx::mxAlgebraFromString(
+      algString = name,
+      name = "Q"
+    )
+  )
 }

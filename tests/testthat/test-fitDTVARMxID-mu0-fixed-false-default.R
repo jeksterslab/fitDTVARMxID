@@ -18,7 +18,8 @@ lapply(
       mu0_ubound = NULL,
       name = "mu0",
       name_beta = "beta",
-      name_alpha = "alpha"
+      name_alpha = "alpha",
+      center = FALSE
     )
     mu0_name <- mu0$mu0@name
     mu0_values <- mu0$mu0@values

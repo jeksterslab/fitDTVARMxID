@@ -15,7 +15,8 @@ lapply(
       alpha_values = NULL,
       alpha_lbound = NULL,
       alpha_ubound = NULL,
-      name = "alpha"
+      name_alpha = "alpha",
+      center = FALSE
     )
     alpha_name <- alpha$alpha@name
     alpha_values <- alpha$alpha@values

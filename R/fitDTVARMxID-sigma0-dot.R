@@ -18,7 +18,7 @@
   # Initial condition covariance matrix
   if (sigma0_fixed) {
     if (sigma0_func) {
-      out <- .FitDTVARMxIDSigma0Func(
+      sigma0 <- .FitDTVARMxIDSigma0Func(
         k = k,
         statenames = statenames,
         name = name,
@@ -26,7 +26,7 @@
         name_psi = name_psi
       )
     } else {
-      out <- .FitDTVARMxIDSigma0Fixed(
+      sigma0 <- .FitDTVARMxIDSigma0Fixed(
         k = k,
         statenames = statenames,
         sigma0_diag = sigma0_diag,
@@ -37,7 +37,7 @@
     }
   } else {
     if (sigma0_diag) {
-      out <- .FitDTVARMxIDSigma0Diag(
+      sigma0 <- .FitDTVARMxIDSigma0Diag(
         k = k,
         statenames = statenames,
         sigma0_d_free = sigma0_d_free,
@@ -47,7 +47,7 @@
         name = name
       )
     } else {
-      out <- .FitDTVARMxIDSigma0Sym(
+      sigma0 <- .FitDTVARMxIDSigma0Sym(
         k = k,
         statenames = statenames,
         sigma0_d_free = sigma0_d_free,
@@ -62,5 +62,11 @@
       )
     }
   }
-  out
+  c(
+    sigma0,
+    OpenMx::mxAlgebraFromString(
+      algString = name,
+      name = "P0"
+    )
+  )
 }
