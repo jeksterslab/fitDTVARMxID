@@ -9,7 +9,7 @@
   # D
   # observed variables on covariates
   if (nu_fixed) {
-    out <- .FitDTVARMxIDNuFixed(
+    nu <- .FitDTVARMxIDNuFixed(
       k = k,
       nu_values = nu_values,
       name = name
@@ -29,7 +29,7 @@
         stop("Warning in `nu_values`: ", w$message)
       }
     )
-    out <- .MxHelperFullMxMatrix(
+    nu <- .MxHelperFullMxMatrix(
       m = k,
       n = 1,
       free_val = nu_free,
@@ -42,5 +42,11 @@
       name = name
     )
   }
-  out
+  c(
+    nu,
+    OpenMx::mxAlgebraFromString(
+      algString = name,
+      name = "D"
+    )
+  )
 }

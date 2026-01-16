@@ -138,6 +138,10 @@
 #' @param alpha_ubound Numeric vector of upper bounds for `alpha`.
 #'   If `NULL`, no upper bounds are set.
 #'   Ignored if `alpha_fixed = TRUE`.
+#' @param center Logical.
+#'   If TRUE, use the mean-centered (mean-reverting) state equation.
+#'   Note that when `center = TRUE`, `alpha` is interpreted as the set-point
+#'   and not the intercept in the state equation.
 #' @param beta_fixed Logical.
 #'   If `TRUE`, the dynamic model coefficient matrix `beta` is fixed.
 #'   If `FALSE`, `beta` is estimated.
@@ -440,6 +444,7 @@ FitDTVARMxID <- function(data,
                          alpha_values = NULL,
                          alpha_lbound = NULL,
                          alpha_ubound = NULL,
+                         center = FALSE,
                          beta_fixed = FALSE,
                          beta_free = NULL,
                          beta_values = NULL,
@@ -529,6 +534,7 @@ FitDTVARMxID <- function(data,
     alpha_values = alpha_values,
     alpha_lbound = alpha_lbound,
     alpha_ubound = alpha_ubound,
+    center = center,
     beta_fixed = beta_fixed,
     beta_free = beta_free,
     beta_values = beta_values,
@@ -600,6 +606,7 @@ FitDTVARMxID <- function(data,
     alpha_values = alpha_values,
     alpha_lbound = alpha_lbound,
     alpha_ubound = alpha_ubound,
+    center = center,
     beta_fixed = beta_fixed,
     beta_free = beta_free,
     beta_values = beta_values,

@@ -19,14 +19,14 @@ lapply(
       theta_d_equal = FALSE,
       name = "theta"
     )
-    theta_name <- theta@name
-    theta_values <- theta@values
+    theta_name <- theta[[1]]@name
+    theta_values <- theta[[1]]@values
     testthat::test_that(
       paste(text, "class"),
       {
         testthat::skip_on_cran()
         testthat::expect_true(
-          class(theta) == "ZeroMatrix"
+          class(theta[[1]]) == "ZeroMatrix"
         )
       }
     )

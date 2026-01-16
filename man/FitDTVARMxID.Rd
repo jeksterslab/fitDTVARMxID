@@ -13,6 +13,7 @@ FitDTVARMxID(
   alpha_values = NULL,
   alpha_lbound = NULL,
   alpha_ubound = NULL,
+  center = FALSE,
   beta_fixed = FALSE,
   beta_free = NULL,
   beta_values = NULL,
@@ -112,6 +113,11 @@ Ignored if \code{alpha_fixed = TRUE}.}
 \item{alpha_ubound}{Numeric vector of upper bounds for \code{alpha}.
 If \code{NULL}, no upper bounds are set.
 Ignored if \code{alpha_fixed = TRUE}.}
+
+\item{center}{Logical.
+If TRUE, use the mean-centered (mean-reverting) state equation.
+Note that when \code{center = TRUE}, \code{alpha} is interpreted as the set-point
+and not the intercept in the state equation.}
 
 \item{beta_fixed}{Logical.
 If \code{TRUE}, the dynamic model coefficient matrix \code{beta} is fixed.

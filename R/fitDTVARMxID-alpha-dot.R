@@ -5,14 +5,16 @@
                                alpha_values,
                                alpha_lbound,
                                alpha_ubound,
-                               name) {
+                               name_alpha,
+                               name_beta,
+                               center) {
   # B
   # latent variables on covariates
   if (alpha_fixed) {
-    out <- .FitDTVARMxIDAlphaFixed(
+    alpha <- .FitDTVARMxIDAlphaFixed(
       k = k,
       alpha_values = alpha_values,
-      name = name
+      name = name_alpha
     )
   } else {
     alpha_values <- tryCatch(
@@ -29,7 +31,7 @@
         stop("Warning in `alpha_values`: ", w$message)
       }
     )
-    out <- .MxHelperFullMxMatrix(
+    alpha <- .MxHelperFullMxMatrix(
       m = k,
       n = 1,
       free_val = alpha_free,
@@ -39,7 +41,30 @@
       vec = TRUE,
       row = statenames,
       col = 1,
-      name = name
+      name = name_alpha
+    )
+  }
+  if (center) {
+    out <- c(
+      alpha,
+      OpenMx::mxAlgebraFromString(
+        algString = paste0(
+          name_alpha,
+          " - ",
+          name_beta,
+          " %*% ",
+          name_alpha
+        ),
+        name = "B"
+      )
+    )
+  } else {
+    out <- c(
+      alpha,
+      OpenMx::mxAlgebraFromString(
+        algString = name_alpha,
+        name = "B"
+      )
     )
   }
   out

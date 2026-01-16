@@ -9,7 +9,7 @@
   # A
   # auto regression and cross regression coefficients
   if (beta_fixed) {
-    out <- .FitDTVARMxBetaFixed(
+    beta <- .FitDTVARMxBetaFixed(
       k = k,
       beta_values = beta_values,
       name = name
@@ -43,7 +43,7 @@
         ncol = k
       )
     }
-    out <- .MxHelperFullMxMatrix(
+    beta <- .MxHelperFullMxMatrix(
       m = k,
       n = k,
       values = beta_values,
@@ -56,5 +56,11 @@
       name = name
     )
   }
-  out
+  c(
+    beta,
+    OpenMx::mxAlgebraFromString(
+      algString = name,
+      name = "A"
+    )
+  )
 }

@@ -8,21 +8,23 @@
                              mu0_ubound,
                              name,
                              name_beta,
-                             name_alpha) {
+                             name_alpha,
+                             center) {
   # x0
   # initial condition
   # mean
   if (mu0_fixed) {
     if (mu0_func) {
-      out <- .FitDTVARMxIDMu0Func(
+      mu0 <- .FitDTVARMxIDMu0Func(
         k = k,
         statenames = statenames,
         name = name,
         name_beta = name_beta,
-        name_alpha = name_alpha
+        name_alpha = name_alpha,
+        center = center
       )
     } else {
-      out <- .FitDTVARMxIDMu0Fixed(
+      mu0 <- .FitDTVARMxIDMu0Fixed(
         k = k,
         statenames = statenames,
         mu0_values = mu0_values,
@@ -30,7 +32,7 @@
       )
     }
   } else {
-    out <- .FitDTVARMxIDMu0Vec(
+    mu0 <- .FitDTVARMxIDMu0Vec(
       k = k,
       statenames = statenames,
       mu0_free = mu0_free,
@@ -40,5 +42,11 @@
       name = name
     )
   }
-  out
+  c(
+    mu0,
+    OpenMx::mxAlgebraFromString(
+      algString = name,
+      name = "x0"
+    )
+  )
 }
