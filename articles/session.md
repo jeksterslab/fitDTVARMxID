@@ -34,15 +34,15 @@ sessionInfo()
 #> 
 #> other attached packages:
 #> [1] fitDTVARMxID_0.0.0.9003   OpenMx_2.22.10           
-#> [3] simStateSpace_1.2.12.9001
+#> [3] simStateSpace_1.2.14.9000
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] digest_0.6.39         xfun_0.55             Matrix_1.7-4         
 #>  [4] lattice_0.22-7        knitr_1.51            parallel_4.5.2       
-#>  [7] RcppParallel_5.1.11-1 lifecycle_1.0.4       cli_3.6.5.9000       
+#>  [7] RcppParallel_5.1.11-1 lifecycle_1.0.5       cli_3.6.5.9000       
 #> [10] rProject_0.0.23       grid_4.5.2            compiler_4.5.2       
-#> [13] tools_4.5.2           evaluate_1.0.5        Rcpp_1.1.0           
-#> [16] otel_0.2.0            rlang_1.1.6           MASS_7.3-65
+#> [13] tools_4.5.2           evaluate_1.0.5        Rcpp_1.1.1           
+#> [16] otel_0.2.0            rlang_1.1.7           MASS_7.3-65
 ```
 
 ## Packages
@@ -51,8 +51,13 @@ sessionInfo()
 
 installed.packages()[, c("Package", "Version")]
 #>                   Package             Version      
+#> cffr              "cffr"              "1.2.1"      
+#> devtools          "devtools"          "2.4.6.9000" 
 #> fitDTVARMxID      "fitDTVARMxID"      "0.0.0.9003" 
+#> gert              "gert"              "2.3.1"      
 #> rProject          "rProject"          "0.0.23"     
+#> testthat          "testthat"          "3.3.2"      
+#> tibble            "tibble"            "3.3.1"      
 #> abind             "abind"             "1.4-8"      
 #> Amelia            "Amelia"            "1.8.3"      
 #> arm               "arm"               "1.14-4"     
@@ -159,7 +164,7 @@ installed.packages()[, c("Package", "Version")]
 #> future.apply      "future.apply"      "1.20.1"     
 #> gargle            "gargle"            "1.6.0"      
 #> generics          "generics"          "0.1.4"      
-#> gert              "gert"              "2.2.0"      
+#> gert              "gert"              "2.3.0"      
 #> ggplot2           "ggplot2"           "4.0.1"      
 #> ggrepel           "ggrepel"           "0.9.6"      
 #> gh                "gh"                "1.5.0"      
@@ -183,7 +188,7 @@ installed.packages()[, c("Package", "Version")]
 #> hdrcde            "hdrcde"            "3.4"        
 #> here              "here"              "1.0.2"      
 #> highr             "highr"             "0.11"       
-#> Hmisc             "Hmisc"             "5.2-4"      
+#> Hmisc             "Hmisc"             "5.2-5"      
 #> hms               "hms"               "1.1.4"      
 #> htmlTable         "htmlTable"         "2.4.3"      
 #> htmltools         "htmltools"         "0.5.9"      
@@ -212,13 +217,13 @@ installed.packages()[, c("Package", "Version")]
 #> labeling          "labeling"          "0.4.3"      
 #> Lahman            "Lahman"            "13.0-0"     
 #> languageserver    "languageserver"    "0.3.16"     
-#> later             "later"             "1.4.4"      
-#> latex2exp         "latex2exp"         "0.9.6"      
+#> later             "later"             "1.4.5"      
+#> latex2exp         "latex2exp"         "0.9.8"      
 #> lava              "lava"              "1.8.2"      
 #> lavaan            "lavaan"            "0.6-21"     
 #> lazyeval          "lazyeval"          "0.2.2"      
 #> lhs               "lhs"               "1.2.0"      
-#> lifecycle         "lifecycle"         "1.0.4"      
+#> lifecycle         "lifecycle"         "1.0.5"      
 #> lintr             "lintr"             "3.3.0-1"    
 #> listenv           "listenv"           "0.10.0"     
 #> litedown          "litedown"          "0.9"        
@@ -258,11 +263,11 @@ installed.packages()[, c("Package", "Version")]
 #> nycflights13      "nycflights13"      "1.0.2"      
 #> OpenMx            "OpenMx"            "2.22.10"    
 #> openssl           "openssl"           "2.3.4"      
-#> ordinal           "ordinal"           "2023.12-4.1"
+#> ordinal           "ordinal"           "2025.12-29" 
 #> otel              "otel"              "0.2.0"      
 #> pan               "pan"               "1.9"        
 #> pander            "pander"            "0.6.6"      
-#> parallelly        "parallelly"        "1.46.0"     
+#> parallelly        "parallelly"        "1.46.1"     
 #> parsnip           "parsnip"           "1.4.0"      
 #> patchwork         "patchwork"         "1.3.2"      
 #> pbapply           "pbapply"           "1.7-4"      
@@ -292,7 +297,7 @@ installed.packages()[, c("Package", "Version")]
 #> proto             "proto"             "1.0.0"      
 #> ps                "ps"                "1.9.1"      
 #> psych             "psych"             "2.5.6"      
-#> purrr             "purrr"             "1.2.0"      
+#> purrr             "purrr"             "1.2.1"      
 #> qgraph            "qgraph"            "1.9.8"      
 #> qpdf              "qpdf"              "1.4.1"      
 #> quadprog          "quadprog"          "1.5-8"      
@@ -313,7 +318,7 @@ installed.packages()[, c("Package", "Version")]
 #> rbibutils         "rbibutils"         "2.4"        
 #> rcmdcheck         "rcmdcheck"         "1.4.0"      
 #> RColorBrewer      "RColorBrewer"      "1.1-3"      
-#> Rcpp              "Rcpp"              "1.1.0"      
+#> Rcpp              "Rcpp"              "1.1.1"      
 #> RcppArmadillo     "RcppArmadillo"     "15.2.3-1"   
 #> RcppEigen         "RcppEigen"         "0.3.4.0.2"  
 #> RcppGSL           "RcppGSL"           "0.3.13"     
@@ -325,7 +330,7 @@ installed.packages()[, c("Package", "Version")]
 #> readxl            "readxl"            "1.4.5"      
 #> recipes           "recipes"           "1.3.1"      
 #> RefManageR        "RefManageR"        "1.4.0"      
-#> reformulas        "reformulas"        "0.4.3"      
+#> reformulas        "reformulas"        "0.4.3.1"    
 #> rematch           "rematch"           "2.0.0"      
 #> rematch2          "rematch2"          "2.1.2"      
 #> remotes           "remotes"           "2.5.0"      
@@ -338,7 +343,7 @@ installed.packages()[, c("Package", "Version")]
 #> Rhdf5lib          "Rhdf5lib"          "1.32.0"     
 #> rhub              "rhub"              "2.0.1"      
 #> rjags             "rjags"             "4-17"       
-#> rlang             "rlang"             "1.1.6"      
+#> rlang             "rlang"             "1.1.7"      
 #> RMariaDB          "RMariaDB"          "1.3.4"      
 #> rmarkdown         "rmarkdown"         "2.30"       
 #> roxygen2          "roxygen2"          "7.3.3.9000" 
@@ -349,7 +354,7 @@ installed.packages()[, c("Package", "Version")]
 #> rsample           "rsample"           "1.3.1"      
 #> RSQLite           "RSQLite"           "2.4.5"      
 #> rstan             "rstan"             "2.32.7"     
-#> rstantools        "rstantools"        "2.5.0"      
+#> rstantools        "rstantools"        "2.6.0"      
 #> rstudioapi        "rstudioapi"        "0.17.1"     
 #> rversions         "rversions"         "3.0.0"      
 #> rvest             "rvest"             "1.0.5"      
@@ -364,7 +369,7 @@ installed.packages()[, c("Package", "Version")]
 #> sfd               "sfd"               "0.1.0"      
 #> shape             "shape"             "1.4.6.1"    
 #> shiny             "shiny"             "1.12.1"     
-#> simStateSpace     "simStateSpace"     "1.2.12.9001"
+#> simStateSpace     "simStateSpace"     "1.2.14.9000"
 #> slider            "slider"            "0.3.3"      
 #> snow              "snow"              "0.4-4"      
 #> snowfall          "snowfall"          "1.84-6.3"   
@@ -392,7 +397,7 @@ installed.packages()[, c("Package", "Version")]
 #> timechange        "timechange"        "0.3.0"      
 #> timeDate          "timeDate"          "4051.111"   
 #> tinytex           "tinytex"           "0.58.1"     
-#> tseries           "tseries"           "0.10-58"    
+#> tseries           "tseries"           "0.10-59"    
 #> TTR               "TTR"               "0.24.4"     
 #> tune              "tune"              "2.0.1"      
 #> tzdb              "tzdb"              "0.5.0"      
@@ -459,52 +464,51 @@ installed.packages()[, c("Package", "Version")]
 
     #> Architecture:                            x86_64
     #> CPU op-mode(s):                          32-bit, 64-bit
-    #> Address sizes:                           48 bits physical, 48 bits virtual
+    #> Address sizes:                           46 bits physical, 48 bits virtual
     #> Byte Order:                              Little Endian
-    #> CPU(s):                                  32
-    #> On-line CPU(s) list:                     0-31
-    #> Vendor ID:                               AuthenticAMD
-    #> Model name:                              AMD Ryzen 9 9955HX 16-Core Processor
-    #> CPU family:                              26
-    #> Model:                                   68
+    #> CPU(s):                                  8
+    #> On-line CPU(s) list:                     0-7
+    #> Vendor ID:                               GenuineIntel
+    #> Model name:                              Intel(R) Xeon(R) CPU E5-1620 v2 @ 3.70GHz
+    #> CPU family:                              6
+    #> Model:                                   62
     #> Thread(s) per core:                      2
-    #> Core(s) per socket:                      16
+    #> Core(s) per socket:                      4
     #> Socket(s):                               1
-    #> Stepping:                                0
-    #> Frequency boost:                         enabled
-    #> CPU(s) scaling MHz:                      56%
-    #> CPU max MHz:                             5060.9761
-    #> CPU min MHz:                             1219.5129
-    #> BogoMIPS:                                4990.39
-    #> Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good amd_lbr_v2 nopl xtopology nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba perfmon_v2 ibrs ibpb stibp ibrs_enhanced vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local user_shstk avx_vnni avx512_bf16 clzero irperf xsaveerptr rdpru wbnoinvd cppc arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload vgif x2avic v_spec_ctrl vnmi avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid bus_lock_detect movdiri movdir64b overflow_recov succor smca fsrm avx512_vp2intersect flush_l1d amd_lbr_pmc_freeze
-    #> Virtualization:                          AMD-V
-    #> L1d cache:                               768 KiB (16 instances)
-    #> L1i cache:                               512 KiB (16 instances)
-    #> L2 cache:                                16 MiB (16 instances)
-    #> L3 cache:                                64 MiB (2 instances)
+    #> Stepping:                                4
+    #> CPU(s) scaling MHz:                      78%
+    #> CPU max MHz:                             3900.0000
+    #> CPU min MHz:                             1200.0000
+    #> BogoMIPS:                                7382.52
+    #> Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts vnmi md_clear flush_l1d
+    #> Virtualization:                          VT-x
+    #> L1d cache:                               128 KiB (4 instances)
+    #> L1i cache:                               128 KiB (4 instances)
+    #> L2 cache:                                1 MiB (4 instances)
+    #> L3 cache:                                10 MiB (1 instance)
     #> NUMA node(s):                            1
-    #> NUMA node0 CPU(s):                       0-31
+    #> NUMA node0 CPU(s):                       0-7
     #> Vulnerability Gather data sampling:      Not affected
     #> Vulnerability Indirect target selection: Not affected
-    #> Vulnerability Itlb multihit:             Not affected
-    #> Vulnerability L1tf:                      Not affected
-    #> Vulnerability Mds:                       Not affected
-    #> Vulnerability Meltdown:                  Not affected
-    #> Vulnerability Mmio stale data:           Not affected
+    #> Vulnerability Itlb multihit:             KVM: Mitigation: Split huge pages
+    #> Vulnerability L1tf:                      Mitigation; PTE Inversion; VMX conditional cache flushes, SMT vulnerable
+    #> Vulnerability Mds:                       Mitigation; Clear CPU buffers; SMT vulnerable
+    #> Vulnerability Meltdown:                  Mitigation; PTI
+    #> Vulnerability Mmio stale data:           Unknown: No mitigations
     #> Vulnerability Reg file data sampling:    Not affected
     #> Vulnerability Retbleed:                  Not affected
-    #> Vulnerability Spec rstack overflow:      Mitigation; IBPB on VMEXIT only
+    #> Vulnerability Spec rstack overflow:      Not affected
     #> Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
     #> Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
-    #> Vulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; STIBP always-on; PBRSB-eIBRS Not affected; BHI Not affected
+    #> Vulnerability Spectre v2:                Mitigation; Retpolines; IBPB conditional; IBRS_FW; STIBP conditional; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
     #> Vulnerability Srbds:                     Not affected
     #> Vulnerability Tsa:                       Not affected
     #> Vulnerability Tsx async abort:           Not affected
-    #> Vulnerability Vmscape:                   Mitigation; IBPB on VMEXIT
+    #> Vulnerability Vmscape:                   Mitigation; IBPB before exit to userspace
 
 ## Memory
 
     #>                total        used        free      shared  buff/cache   available
-    #> Mem:            44Gi       6.4Gi        33Gi        40Mi       5.4Gi        38Gi
-    #> Swap:           31Gi       1.2Mi        31Gi
-    #> Total:          76Gi       6.4Gi        65Gi
+    #> Mem:            23Gi       4.2Gi        16Gi        59Mi       3.2Gi        18Gi
+    #> Swap:           11Gi          0B        11Gi
+    #> Total:          34Gi       4.2Gi        27Gi

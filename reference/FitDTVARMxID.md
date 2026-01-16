@@ -15,6 +15,7 @@ FitDTVARMxID(
   alpha_values = NULL,
   alpha_lbound = NULL,
   alpha_ubound = NULL,
+  center = FALSE,
   beta_fixed = FALSE,
   beta_free = NULL,
   beta_values = NULL,
@@ -124,6 +125,12 @@ FitDTVARMxID(
 
   Numeric vector of upper bounds for `alpha`. If `NULL`, no upper bounds
   are set. Ignored if `alpha_fixed = TRUE`.
+
+- center:
+
+  Logical. If TRUE, use the mean-centered (mean-reverting) state
+  equation. Note that when `center = TRUE`, `alpha` is interpreted as
+  the set-point and not the intercept in the state equation.
 
 - beta_fixed:
 
