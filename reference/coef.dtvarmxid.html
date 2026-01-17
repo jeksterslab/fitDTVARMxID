@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">fitDTVARMxID</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9003</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9004</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,6 +44,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for class 'dtvarmxid'</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span></span>
 <span>  <span class="va">object</span>,</span>
+<span>  mu_eta <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  alpha <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  beta <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  nu <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -64,6 +65,14 @@
 
 <dl><dt id="arg-object">object<a class="anchor" aria-label="anchor" href="#arg-object"></a></dt>
 <dd><p>Object of class <code>dtvarmxid</code>.</p></dd>
+
+
+<dt id="arg-mu-eta">mu_eta<a class="anchor" aria-label="anchor" href="#arg-mu-eta"></a></dt>
+<dd><p>Logical.
+If <code>mu_eta = TRUE</code>,
+include estimates of the <code>mu_eta</code> vector, if available.
+If <code>mu_eta = FALSE</code>,
+exclude estimates of the <code>mu_eta</code> vector.</p></dd>
 
 
 <dt id="arg-alpha">alpha<a class="anchor" aria-label="anchor" href="#arg-alpha"></a></dt>

@@ -10,12 +10,17 @@ FitDTVARMxID(
   data,
   observed,
   id,
-  alpha_fixed = TRUE,
+  center = TRUE,
+  mu_eta_fixed = FALSE,
+  mu_eta_free = NULL,
+  mu_eta_values = NULL,
+  mu_eta_lbound = NULL,
+  mu_eta_ubound = NULL,
+  alpha_fixed = FALSE,
   alpha_free = NULL,
   alpha_values = NULL,
   alpha_lbound = NULL,
   alpha_ubound = NULL,
-  center = FALSE,
   beta_fixed = FALSE,
   beta_free = NULL,
   beta_values = NULL,
@@ -30,7 +35,7 @@ FitDTVARMxID(
   psi_l_values = NULL,
   psi_l_lbound = NULL,
   psi_l_ubound = NULL,
-  nu_fixed = FALSE,
+  nu_fixed = TRUE,
   nu_free = NULL,
   nu_values = NULL,
   nu_lbound = NULL,
@@ -99,6 +104,39 @@ FitDTVARMxID(
   Character string. A character string of the name of the ID variable in
   the data.
 
+- center:
+
+  Logical. If TRUE, use the mean-centered (mean-reverting) state
+  equation. Note that when `center = TRUE`, `alpha` is implied and the
+  set-point `mu_eta` is estimated.
+
+- mu_eta_fixed:
+
+  Logical. If `TRUE`, the dynamic model set-point vector `mu_eta` is
+  fixed. If `FALSE`, `mu_eta` is estimated.
+
+- mu_eta_free:
+
+  Logical vector indicating which elements of `mu_eta` are freely
+  estimated. If `NULL`, all elements are free. Ignored if
+  `mu_eta_fixed = TRUE`.
+
+- mu_eta_values:
+
+  Numeric vector of values for `mu_eta`. If `mu_eta_fixed = TRUE`, these
+  are fixed values. If `mu_eta_fixed = FALSE`, these are starting
+  values. If `NULL`, defaults to a vector of zeros.
+
+- mu_eta_lbound:
+
+  Numeric vector of lower bounds for `mu_eta`. If `NULL`, no lower
+  bounds are set. Ignored if `mu_eta_fixed = TRUE`.
+
+- mu_eta_ubound:
+
+  Numeric vector of upper bounds for `mu_eta`. If `NULL`, no upper
+  bounds are set. Ignored if `mu_eta_fixed = TRUE`.
+
 - alpha_fixed:
 
   Logical. If `TRUE`, the dynamic model intercept vector `alpha` is
@@ -125,12 +163,6 @@ FitDTVARMxID(
 
   Numeric vector of upper bounds for `alpha`. If `NULL`, no upper bounds
   are set. Ignored if `alpha_fixed = TRUE`.
-
-- center:
-
-  Logical. If TRUE, use the mean-centered (mean-reverting) state
-  equation. Note that when `center = TRUE`, `alpha` is interpreted as
-  the set-point and not the intercept in the state equation.
 
 - beta_fixed:
 
@@ -546,7 +578,7 @@ set.seed(42)
 k <- 2
 n <- 5
 time <- 100
-alpha <- rep(x = 0, times = k)
+alpha <- rep(x = 5, times = k)
 beta <- matrix(
   data = c(.5, .0, .2, .5),
   nrow = k,
@@ -558,7 +590,7 @@ psi <- matrix(
   ncol = k
 )
 psi_l <- t(chol(psi))
-nu <- rep(x = 5, times = k)
+nu <- rep(x = 0, times = k)
 lambda <- diag(k)
 theta <- matrix(
   data = c(exp(-2), 0, 0, exp(-2.8)),
@@ -594,11 +626,28 @@ sim <- simStateSpace::SimSSMIVary(
 data <- as.data.frame(sim)
 
 # Fit the model--------------------------------------------------------------
+# center = TRUE
 library(fitDTVARMxID)
 fit <- FitDTVARMxID(
   data = data,
   observed = paste0("y", seq_len(k)),
-  id = "id"
+  id = "id",
+  center = TRUE
+)
+print(fit)
+summary(fit)
+coef(fit)
+vcov(fit)
+converged(fit)
+
+# Fit the model--------------------------------------------------------------
+# center = FALSE
+library(fitDTVARMxID)
+fit <- FitDTVARMxID(
+  data = data,
+  observed = paste0("y", seq_len(k)),
+  id = "id",
+  center = FALSE
 )
 print(fit)
 summary(fit)

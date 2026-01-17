@@ -8,6 +8,7 @@ Sampling Covariance Matrix of the Parameter Estimates
 # S3 method for class 'dtvarmxid'
 vcov(
   object,
+  mu_eta = TRUE,
   alpha = TRUE,
   beta = TRUE,
   nu = TRUE,
@@ -28,6 +29,12 @@ vcov(
 - object:
 
   Object of class `dtvarmxid`.
+
+- mu_eta:
+
+  Logical. If `mu_eta = TRUE`, include estimates of the `mu_eta` vector,
+  if available. If `mu_eta = FALSE`, exclude estimates of the `mu_eta`
+  vector.
 
 - alpha:
 

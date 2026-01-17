@@ -11,7 +11,7 @@ for each unit ID."><script id="MathJax-script" async src="https://cdn.jsdelivr.n
 
     <a class="navbar-brand me-2" href="../index.html">fitDTVARMxID</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9003</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9004</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,12 +51,17 @@ for each unit ID.</p>
 <span>  <span class="va">data</span>,</span>
 <span>  <span class="va">observed</span>,</span>
 <span>  <span class="va">id</span>,</span>
-<span>  alpha_fixed <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  center <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  mu_eta_fixed <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  mu_eta_free <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  mu_eta_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  mu_eta_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  mu_eta_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  alpha_fixed <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  alpha_free <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  alpha_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  alpha_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  alpha_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  center <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  beta_fixed <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  beta_free <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  beta_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -71,7 +76,7 @@ for each unit ID.</p>
 <span>  psi_l_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  psi_l_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  psi_l_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  nu_fixed <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  nu_fixed <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  nu_free <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  nu_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  nu_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -146,6 +151,44 @@ of the names of the observed variables in the data.</p></dd>
 A character string of the name of the ID variable in the data.</p></dd>
 
 
+<dt id="arg-center">center<a class="anchor" aria-label="anchor" href="#arg-center"></a></dt>
+<dd><p>Logical.
+If TRUE, use the mean-centered (mean-reverting) state equation.
+Note that when <code>center = TRUE</code>, <code>alpha</code> is implied
+and the set-point <code>mu_eta</code> is estimated.</p></dd>
+
+
+<dt id="arg-mu-eta-fixed">mu_eta_fixed<a class="anchor" aria-label="anchor" href="#arg-mu-eta-fixed"></a></dt>
+<dd><p>Logical.
+If <code>TRUE</code>, the dynamic model set-point vector <code>mu_eta</code> is fixed.
+If <code>FALSE</code>, <code>mu_eta</code> is estimated.</p></dd>
+
+
+<dt id="arg-mu-eta-free">mu_eta_free<a class="anchor" aria-label="anchor" href="#arg-mu-eta-free"></a></dt>
+<dd><p>Logical vector indicating which elements of <code>mu_eta</code>
+are freely estimated. If <code>NULL</code>, all elements are free.
+Ignored if <code>mu_eta_fixed = TRUE</code>.</p></dd>
+
+
+<dt id="arg-mu-eta-values">mu_eta_values<a class="anchor" aria-label="anchor" href="#arg-mu-eta-values"></a></dt>
+<dd><p>Numeric vector of values for <code>mu_eta</code>.
+If <code>mu_eta_fixed = TRUE</code>, these are fixed values.
+If <code>mu_eta_fixed = FALSE</code>, these are starting values.
+If <code>NULL</code>, defaults to a vector of zeros.</p></dd>
+
+
+<dt id="arg-mu-eta-lbound">mu_eta_lbound<a class="anchor" aria-label="anchor" href="#arg-mu-eta-lbound"></a></dt>
+<dd><p>Numeric vector of lower bounds for <code>mu_eta</code>.
+If <code>NULL</code>, no lower bounds are set.
+Ignored if <code>mu_eta_fixed = TRUE</code>.</p></dd>
+
+
+<dt id="arg-mu-eta-ubound">mu_eta_ubound<a class="anchor" aria-label="anchor" href="#arg-mu-eta-ubound"></a></dt>
+<dd><p>Numeric vector of upper bounds for <code>mu_eta</code>.
+If <code>NULL</code>, no upper bounds are set.
+Ignored if <code>mu_eta_fixed = TRUE</code>.</p></dd>
+
+
 <dt id="arg-alpha-fixed">alpha_fixed<a class="anchor" aria-label="anchor" href="#arg-alpha-fixed"></a></dt>
 <dd><p>Logical.
 If <code>TRUE</code>, the dynamic model intercept vector <code>alpha</code> is fixed.
@@ -175,13 +218,6 @@ Ignored if <code>alpha_fixed = TRUE</code>.</p></dd>
 <dd><p>Numeric vector of upper bounds for <code>alpha</code>.
 If <code>NULL</code>, no upper bounds are set.
 Ignored if <code>alpha_fixed = TRUE</code>.</p></dd>
-
-
-<dt id="arg-center">center<a class="anchor" aria-label="anchor" href="#arg-center"></a></dt>
-<dd><p>Logical.
-If TRUE, use the mean-centered (mean-reverting) state equation.
-Note that when <code>center = TRUE</code>, <code>alpha</code> is interpreted as the set-point
-and not the intercept in the state equation.</p></dd>
 
 
 <dt id="arg-beta-fixed">beta_fixed<a class="anchor" aria-label="anchor" href="#arg-beta-fixed"></a></dt>
@@ -725,7 +761,7 @@ OpenMx 2.0: Extended structural equation and statistical modeling.
 <span class="r-in"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">2</span></span></span>
 <span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">5</span></span></span>
 <span class="r-in"><span><span class="va">time</span> <span class="op">&lt;-</span> <span class="fl">100</span></span></span>
-<span class="r-in"><span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, times <span class="op">=</span> <span class="va">k</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">5</span>, times <span class="op">=</span> <span class="va">k</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.0</span>, <span class="fl">.2</span>, <span class="fl">.5</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  nrow <span class="op">=</span> <span class="va">k</span>,</span></span>
@@ -737,7 +773,7 @@ OpenMx 2.0: Extended structural equation and statistical modeling.
 <span class="r-in"><span>  ncol <span class="op">=</span> <span class="va">k</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">psi_l</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chol.html" class="external-link">chol</a></span><span class="op">(</span><span class="va">psi</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">nu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">5</span>, times <span class="op">=</span> <span class="va">k</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">nu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, times <span class="op">=</span> <span class="va">k</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">theta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span><span class="op">)</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.8</span><span class="op">)</span><span class="op">)</span>,</span></span>
@@ -773,11 +809,28 @@ OpenMx 2.0: Extended structural equation and statistical modeling.
 <span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">sim</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Fit the model--------------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co"># center = TRUE</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/fitDTVARMxID">fitDTVARMxID</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">FitDTVARMxID</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  data <span class="op">=</span> <span class="va">data</span>,</span></span>
 <span class="r-in"><span>  observed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"y"</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  id <span class="op">=</span> <span class="st">"id"</span></span></span>
+<span class="r-in"><span>  id <span class="op">=</span> <span class="st">"id"</span>,</span></span>
+<span class="r-in"><span>  center <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="converged.html">converged</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Fit the model--------------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co"># center = FALSE</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/fitDTVARMxID">fitDTVARMxID</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">FitDTVARMxID</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">data</span>,</span></span>
+<span class="r-in"><span>  observed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"y"</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  id <span class="op">=</span> <span class="st">"id"</span>,</span></span>
+<span class="r-in"><span>  center <span class="op">=</span> <span class="cn">FALSE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>

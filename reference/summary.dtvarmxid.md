@@ -9,6 +9,7 @@ Summary Method for Object of Class `dtvarmxid`
 summary(
   object,
   means = FALSE,
+  mu_eta = TRUE,
   alpha = TRUE,
   beta = TRUE,
   nu = TRUE,
@@ -34,6 +35,12 @@ summary(
 
   Logical. If `means = TRUE`, return means. Otherwise, the function
   returns raw estimates.
+
+- mu_eta:
+
+  Logical. If `mu_eta = TRUE`, include estimates of the `mu_eta` vector,
+  if available. If `mu_eta = FALSE`, exclude estimates of the `mu_eta`
+  vector.
 
 - alpha:
 
