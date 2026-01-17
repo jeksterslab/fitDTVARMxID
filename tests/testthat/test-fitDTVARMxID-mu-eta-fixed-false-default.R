@@ -1,4 +1,4 @@
-## ---- test-fitDTVARMxID-alpha-fixed-false-default
+## ---- test-fitDTVARMxID-mu-eta-fixed-false-default
 lapply(
   X = 1,
   FUN = function(i,
@@ -7,38 +7,40 @@ lapply(
     k <- 3
     idx <- seq_len(k)
     statenames <- paste0("eta", idx)
-    alpha <- fitDTVARMxID:::.FitDTVARMxIDAlpha(
+    mu_eta <- fitDTVARMxID:::.FitDTVARMxIDMuEta(
       k = k,
       statenames = statenames,
       center = FALSE,
-      alpha_fixed = FALSE,
-      alpha_free = NULL,
-      alpha_values = NULL,
-      alpha_lbound = NULL,
-      alpha_ubound = NULL,
-      name = "alpha"
+      mu_eta_fixed = FALSE,
+      mu_eta_free = NULL,
+      mu_eta_values = NULL,
+      mu_eta_lbound = NULL,
+      mu_eta_ubound = NULL,
+      name_mu_eta = "mu_eta",
+      name_alpha = "alpha",
+      name_beta = "beta"
     )
-    alpha_name <- alpha$alpha@name
-    alpha_values <- alpha$alpha@values
-    alpha_labels <- alpha$alpha@labels
-    alpha_free <- alpha$alpha@free
-    alpha_lbound <- alpha$alpha@lbound
-    alpha_ubound <- alpha$alpha@ubound
-    alpha_vec_name <- alpha$alpha_vec@name
-    alpha_vec_values <- alpha$alpha_vec@values
-    alpha_vec_labels <- alpha$alpha_vec@labels
-    alpha_vec_free <- alpha$alpha_vec@free
-    alpha_vec_lbound <- alpha$alpha_vec@lbound
-    alpha_vec_ubound <- alpha$alpha_vec@ubound
+    mu_eta_name <- mu_eta$mu_eta@name
+    mu_eta_values <- mu_eta$mu_eta@values
+    mu_eta_labels <- mu_eta$mu_eta@labels
+    mu_eta_free <- mu_eta$mu_eta@free
+    mu_eta_lbound <- mu_eta$mu_eta@lbound
+    mu_eta_ubound <- mu_eta$mu_eta@ubound
+    mu_eta_vec_name <- mu_eta$mu_eta_vec@name
+    mu_eta_vec_values <- mu_eta$mu_eta_vec@values
+    mu_eta_vec_labels <- mu_eta$mu_eta_vec@labels
+    mu_eta_vec_free <- mu_eta$mu_eta_vec@free
+    mu_eta_vec_lbound <- mu_eta$mu_eta_vec@lbound
+    mu_eta_vec_ubound <- mu_eta$mu_eta_vec@ubound
     testthat::test_that(
       paste(text, "class"),
       {
         testthat::skip_on_cran()
         testthat::expect_true(
-          class(alpha$alpha) == "FullMatrix"
+          class(mu_eta$mu_eta) == "FullMatrix"
         )
         testthat::expect_true(
-          class(alpha$alpha_vec) == "FullMatrix"
+          class(mu_eta$mu_eta_vec) == "FullMatrix"
         )
       }
     )
@@ -47,10 +49,10 @@ lapply(
       {
         testthat::skip_on_cran()
         testthat::expect_true(
-          alpha_name == "alpha"
+          mu_eta_name == "mu_eta"
         )
         testthat::expect_true(
-          alpha_vec_name == "alpha_vec"
+          mu_eta_vec_name == "mu_eta_vec"
         )
       }
     )
@@ -60,12 +62,12 @@ lapply(
         testthat::skip_on_cran()
         testthat::expect_true(
           all(
-            c(alpha_values) == 0
+            c(mu_eta_values) == 0
           )
         )
         testthat::expect_true(
           all(
-            c(alpha_vec_values) == 0
+            c(mu_eta_vec_values) == 0
           )
         )
       }
@@ -76,12 +78,12 @@ lapply(
         testthat::skip_on_cran()
         testthat::expect_true(
           all(
-            c(alpha_labels) == paste0("alpha_", idx, "_1")
+            c(mu_eta_labels) == paste0("mu_eta_", idx, "_1")
           )
         )
         testthat::expect_true(
           all(
-            c(alpha_vec_labels) == paste0("alpha[", idx, ",1]")
+            c(mu_eta_vec_labels) == paste0("mu_eta[", idx, ",1]")
           )
         )
       }
@@ -91,10 +93,10 @@ lapply(
       {
         testthat::skip_on_cran()
         testthat::expect_true(
-          all(alpha_free)
+          all(mu_eta_free)
         )
         testthat::expect_true(
-          all(!alpha_vec_free)
+          all(!mu_eta_vec_free)
         )
       }
     )
@@ -104,12 +106,12 @@ lapply(
         testthat::skip_on_cran()
         testthat::expect_true(
           all(
-            is.na(alpha_lbound)
+            is.na(mu_eta_lbound)
           )
         )
         testthat::expect_true(
           all(
-            is.na(alpha_vec_lbound)
+            is.na(mu_eta_vec_lbound)
           )
         )
       }
@@ -120,16 +122,16 @@ lapply(
         testthat::skip_on_cran()
         testthat::expect_true(
           all(
-            is.na(alpha_ubound)
+            is.na(mu_eta_ubound)
           )
         )
         testthat::expect_true(
           all(
-            is.na(alpha_vec_ubound)
+            is.na(mu_eta_vec_ubound)
           )
         )
       }
     )
   },
-  text = "test-fitDTVARMxID-alpha-fixed-false-default"
+  text = "test-fitDTVARMxID-mu-eta-fixed-false-default"
 )

@@ -1,20 +1,19 @@
 .FitDTVARMxIDAlpha <- function(k,
                                statenames,
+                               center,
                                alpha_fixed,
                                alpha_free,
                                alpha_values,
                                alpha_lbound,
                                alpha_ubound,
-                               name_alpha,
-                               name_beta,
-                               center) {
+                               name) {
   # B
   # latent variables on covariates
   if (alpha_fixed) {
     alpha <- .FitDTVARMxIDAlphaFixed(
       k = k,
       alpha_values = alpha_values,
-      name = name_alpha
+      name = name
     )
   } else {
     alpha_values <- tryCatch(
@@ -41,31 +40,14 @@
       vec = TRUE,
       row = statenames,
       col = 1,
-      name = name_alpha
+      name = name
     )
   }
-  if (center) {
-    out <- c(
-      alpha,
-      OpenMx::mxAlgebraFromString(
-        algString = paste0(
-          name_alpha,
-          " - ",
-          name_beta,
-          " %*% ",
-          name_alpha
-        ),
-        name = "B"
-      )
+  c(
+    alpha,
+    OpenMx::mxAlgebraFromString(
+      algString = name,
+      name = "B"
     )
-  } else {
-    out <- c(
-      alpha,
-      OpenMx::mxAlgebraFromString(
-        algString = name_alpha,
-        name = "B"
-      )
-    )
-  }
-  out
+  )
 }

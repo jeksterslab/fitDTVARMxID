@@ -1,12 +1,17 @@
 .FitDTVARMxIDBuildModelID <- function(data,
                                       observed,
                                       id,
+                                      center,
+                                      mu_eta_fixed,
+                                      mu_eta_free,
+                                      mu_eta_values,
+                                      mu_eta_lbound,
+                                      mu_eta_ubound,
                                       alpha_fixed,
                                       alpha_free,
                                       alpha_values,
                                       alpha_lbound,
                                       alpha_ubound,
-                                      center,
                                       beta_fixed,
                                       beta_free,
                                       beta_values,
@@ -90,31 +95,57 @@
       )
     }
   )
-  if (!alpha_fixed && !nu_fixed) {
-    stop(
-      "`alpha` and `nu` cannot be modeled at the same time at the moment."
-    )
-  }
-  if (!is.list(alpha_values)) {
-    alpha_values <- list(alpha_values)
-  }
-  alpha <- lapply(
-    X = rep(x = alpha_values, length.out = n),
-    FUN = function(alpha_values) {
-      .FitDTVARMxIDAlpha(
-        k = k,
-        statenames = statenames,
-        alpha_fixed = alpha_fixed,
-        alpha_free = alpha_free,
-        alpha_values = alpha_values,
-        alpha_lbound = alpha_lbound,
-        alpha_ubound = alpha_ubound,
-        name_alpha = "alpha",
-        name_beta = "beta",
-        center = center
+  if (center) {
+    if (!mu_eta_fixed && !nu_fixed) {
+      stop(
+        "`mu_eta` and `nu` cannot be modeled at the same time at the moment."
       )
     }
-  )
+    if (!is.list(mu_eta_values)) {
+      mu_eta_values <- list(mu_eta_values)
+    }
+    alpha <- lapply(
+      X = rep(x = mu_eta_values, length.out = n),
+      FUN = function(mu_eta_values) {
+        .FitDTVARMxIDMuEta(
+          k = k,
+          statenames = statenames,
+          mu_eta_fixed = mu_eta_fixed,
+          mu_eta_free = mu_eta_free,
+          mu_eta_values = mu_eta_values,
+          mu_eta_lbound = mu_eta_lbound,
+          mu_eta_ubound = mu_eta_ubound,
+          name_mu_eta = "mu_eta",
+          name_alpha = "alpha",
+          name_beta = "beta"
+        )
+      }
+    )
+  } else {
+    if (!alpha_fixed && !nu_fixed) {
+      stop(
+        "`alpha` and `nu` cannot be modeled at the same time at the moment."
+      )
+    }
+    if (!is.list(alpha_values)) {
+      alpha_values <- list(alpha_values)
+    }
+    alpha <- lapply(
+      X = rep(x = alpha_values, length.out = n),
+      FUN = function(alpha_values) {
+        .FitDTVARMxIDAlpha(
+          k = k,
+          statenames = statenames,
+          alpha_fixed = alpha_fixed,
+          alpha_free = alpha_free,
+          alpha_values = alpha_values,
+          alpha_lbound = alpha_lbound,
+          alpha_ubound = alpha_ubound,
+          name = "alpha"
+        )
+      }
+    )
+  }
   lambda <- lapply(
     X = seq_len(n),
     FUN = function(i) {
@@ -255,6 +286,7 @@
       .FitDTVARMxIDMuFunc(
         k = k,
         statenames = statenames,
+        center = center,
         name = "mu",
         name_beta = "beta",
         name_alpha = "alpha"

@@ -1,25 +1,25 @@
-.FitDTVARMxIDAlphaFixed <- function(k,
-                                    alpha_values,
+.FitDTVARMxIDMuEtaFixed <- function(k,
+                                    mu_eta_values,
                                     name) {
   # B
   # latent variables on covariates
-  if (is.null(alpha_values)) {
-    alpha <- OpenMx::mxMatrix(
+  if (is.null(mu_eta_values)) {
+    mu_eta <- OpenMx::mxMatrix(
       type = "Zero",
       nrow = k,
       ncol = 1,
       name = name
     )
   } else {
-    alpha <- OpenMx::mxMatrix(
+    mu_eta <- OpenMx::mxMatrix(
       type = "Full",
       nrow = k,
       ncol = 1,
       free = FALSE,
-      values = alpha_values,
+      values = mu_eta_values,
       byrow = FALSE,
       name = name
     )
   }
-  alpha
+  mu_eta
 }

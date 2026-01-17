@@ -1,4 +1,4 @@
-## ---- test-fitDTVARMxID-alpha-fixed-true-default
+## ---- test-fitDTVARMxID-mu-eta-fixed-true-default
 lapply(
   X = 1,
   FUN = function(i,
@@ -7,29 +7,31 @@ lapply(
     k <- 3
     idx <- seq_len(k)
     statenames <- paste0("eta", idx)
-    alpha <- fitDTVARMxID:::.FitDTVARMxIDAlpha(
+    mu_eta <- fitDTVARMxID:::.FitDTVARMxIDMuEta(
       k = k,
       statenames = statenames,
       center = FALSE,
-      alpha_fixed = TRUE,
-      alpha_free = NULL,
-      alpha_values = NULL,
-      alpha_lbound = NULL,
-      alpha_ubound = NULL,
-      name = "alpha"
+      mu_eta_fixed = TRUE,
+      mu_eta_free = NULL,
+      mu_eta_values = NULL,
+      mu_eta_lbound = NULL,
+      mu_eta_ubound = NULL,
+      name_mu_eta = "mu_eta",
+      name_alpha = "alpha",
+      name_beta = "beta"
     )
-    alpha_name <- alpha[[1]]@name
-    alpha_values <- alpha[[1]]@values
-    alpha_labels <- alpha[[1]]@labels
-    alpha_free <- alpha[[1]]@free
-    alpha_lbound <- alpha[[1]]@lbound
-    alpha_ubound <- alpha[[1]]@ubound
+    mu_eta_name <- mu_eta[[1]]@name
+    mu_eta_values <- mu_eta[[1]]@values
+    mu_eta_labels <- mu_eta[[1]]@labels
+    mu_eta_free <- mu_eta[[1]]@free
+    mu_eta_lbound <- mu_eta[[1]]@lbound
+    mu_eta_ubound <- mu_eta[[1]]@ubound
     testthat::test_that(
       paste(text, "class"),
       {
         testthat::skip_on_cran()
         testthat::expect_true(
-          class(alpha[[1]]) == "ZeroMatrix"
+          class(mu_eta[[1]]) == "ZeroMatrix"
         )
       }
     )
@@ -38,7 +40,7 @@ lapply(
       {
         testthat::skip_on_cran()
         testthat::expect_true(
-          alpha_name == "alpha"
+          mu_eta_name == "mu_eta"
         )
       }
     )
@@ -48,7 +50,7 @@ lapply(
         testthat::skip_on_cran()
         testthat::expect_true(
           all(
-            c(alpha_values) == 0
+            c(mu_eta_values) == 0
           )
         )
       }
@@ -59,7 +61,7 @@ lapply(
         testthat::skip_on_cran()
         testthat::expect_true(
           all(
-            is.na(alpha_labels)
+            is.na(mu_eta_labels)
           )
         )
       }
@@ -69,7 +71,7 @@ lapply(
       {
         testthat::skip_on_cran()
         testthat::expect_true(
-          !all(alpha_free)
+          !all(mu_eta_free)
         )
       }
     )
@@ -79,7 +81,7 @@ lapply(
         testthat::skip_on_cran()
         testthat::expect_true(
           all(
-            is.na(alpha_lbound)
+            is.na(mu_eta_lbound)
           )
         )
       }
@@ -90,11 +92,11 @@ lapply(
         testthat::skip_on_cran()
         testthat::expect_true(
           all(
-            is.na(alpha_ubound)
+            is.na(mu_eta_ubound)
           )
         )
       }
     )
   },
-  text = "test-fitDTVARMxID-alpha-fixed-true-default"
+  text = "test-fitDTVARMxID-mu-eta-fixed-true-default"
 )

@@ -7,6 +7,7 @@
 \method{summary}{dtvarmxid}(
   object,
   means = FALSE,
+  mu_eta = TRUE,
   alpha = TRUE,
   beta = TRUE,
   nu = TRUE,
@@ -27,6 +28,12 @@
 \item{means}{Logical.
 If \code{means = TRUE}, return means.
 Otherwise, the function returns raw estimates.}
+
+\item{mu_eta}{Logical.
+If \code{mu_eta = TRUE},
+include estimates of the \code{mu_eta} vector, if available.
+If \code{mu_eta = FALSE},
+exclude estimates of the \code{mu_eta} vector.}
 
 \item{alpha}{Logical.
 If \code{alpha = TRUE},

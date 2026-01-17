@@ -15,6 +15,7 @@
 #' @export
 print.dtvarmxid <- function(x,
                             means = FALSE,
+                            mu_eta = TRUE,
                             alpha = TRUE,
                             beta = TRUE,
                             nu = TRUE,
@@ -31,6 +32,7 @@ print.dtvarmxid <- function(x,
     summary.dtvarmxid(
       object = x,
       means = means,
+      mu_eta = mu_eta,
       alpha = alpha,
       beta = beta,
       nu = nu,
@@ -63,6 +65,7 @@ print.dtvarmxid <- function(x,
 #' @export
 summary.dtvarmxid <- function(object,
                               means = FALSE,
+                              mu_eta = TRUE,
                               alpha = TRUE,
                               beta = TRUE,
                               nu = TRUE,
@@ -80,6 +83,7 @@ summary.dtvarmxid <- function(object,
     args = lapply(
       X = object$output,
       FUN = coef,
+      mu_eta = mu_eta,
       alpha = alpha,
       beta = beta,
       nu = nu,
@@ -95,27 +99,30 @@ summary.dtvarmxid <- function(object,
   if (means) {
     out <- colMeans(out)
   }
-  structure(
-    .Data = out,
-    fit = object,
-    means = means,
-    alpha = alpha,
-    beta = beta,
-    nu = nu,
-    psi = psi,
-    theta = theta,
-    converged = converged,
-    grad_tol = grad_tol,
-    hess_tol = hess_tol,
-    vanishing_theta = vanishing_theta,
-    theta_tol = theta_tol,
-    digits = digits,
-    print_summary = round(
-      x = out,
-      digits = digits
-    ),
-    class = "summary.dtvarmxid"
+  print_summary <- round(
+    x = out,
+    digits = digits
   )
+  class(out) <- c(
+    "summary.dtvarmxid",
+    class(out)
+  )
+  attr(out, "fit") <- object
+  attr(out, "means") <- means
+  attr(out, "mu_eta") <- mu_eta
+  attr(out, "alpha") <- alpha
+  attr(out, "beta") <- beta
+  attr(out, "nu") <- nu
+  attr(out, "psi") <- psi
+  attr(out, "theta") <- theta
+  attr(out, "converged") <- converged
+  attr(out, "grad_tol") <- grad_tol
+  attr(out, "hess_tol") <- hess_tol
+  attr(out, "vanishing_theta") <- vanishing_theta
+  attr(out, "theta_tol") <- theta_tol
+  attr(out, "digits") <- digits
+  attr(out, "print_summary") <- print_summary
+  out
 }
 
 #' @noRd
@@ -151,6 +158,11 @@ print.summary.dtvarmxid <- function(x,
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param object Object of class `dtvarmxid`.
+#' @param mu_eta Logical.
+#'   If `mu_eta = TRUE`,
+#'   include estimates of the `mu_eta` vector, if available.
+#'   If `mu_eta = FALSE`,
+#'   exclude estimates of the `mu_eta` vector.
 #' @param alpha Logical.
 #'   If `alpha = TRUE`,
 #'   include estimates of the `alpha` vector, if available.
@@ -199,6 +211,7 @@ print.summary.dtvarmxid <- function(x,
 #' @import OpenMx
 #' @export
 coef.dtvarmxid <- function(object,
+                           mu_eta = TRUE,
                            alpha = TRUE,
                            beta = TRUE,
                            nu = TRUE,
@@ -229,6 +242,15 @@ coef.dtvarmxid <- function(object,
     coef(fit[[1]])
   )
   idx <- integer(0)
+  if (mu_eta) {
+    idx <- c(
+      idx,
+      grep(
+        pattern = "^mu_eta_",
+        x = parnames
+      )
+    )
+  }
   if (alpha) {
     idx <- c(
       idx,
@@ -289,6 +311,11 @@ coef.dtvarmxid <- function(object,
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param object Object of class `dtvarmxid`.
+#' @param mu_eta Logical.
+#'   If `mu_eta = TRUE`,
+#'   include estimates of the `mu_eta` vector, if available.
+#'   If `mu_eta = FALSE`,
+#'   exclude estimates of the `mu_eta` vector.
 #' @param alpha Logical.
 #'   If `alpha = TRUE`,
 #'   include estimates of the `alpha` vector, if available.
@@ -340,6 +367,7 @@ coef.dtvarmxid <- function(object,
 #' @import OpenMx
 #' @export
 vcov.dtvarmxid <- function(object,
+                           mu_eta = TRUE,
                            alpha = TRUE,
                            beta = TRUE,
                            nu = TRUE,
@@ -404,6 +432,15 @@ vcov.dtvarmxid <- function(object,
     coef(fit[[1]])
   )
   idx <- integer(0)
+  if (mu_eta) {
+    idx <- c(
+      idx,
+      grep(
+        pattern = "^mu_eta_",
+        x = parnames
+      )
+    )
+  }
   if (alpha) {
     idx <- c(
       idx,
