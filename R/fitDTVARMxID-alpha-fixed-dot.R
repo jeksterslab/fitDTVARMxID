@@ -4,14 +4,14 @@
   # B
   # latent variables on covariates
   if (is.null(alpha_values)) {
-    out <- OpenMx::mxMatrix(
+    alpha <- OpenMx::mxMatrix(
       type = "Zero",
       nrow = k,
       ncol = 1,
       name = name
     )
   } else {
-    out <- OpenMx::mxMatrix(
+    alpha <- OpenMx::mxMatrix(
       type = "Full",
       nrow = k,
       ncol = 1,
@@ -21,5 +21,5 @@
       name = name
     )
   }
-  out
+  alpha
 }

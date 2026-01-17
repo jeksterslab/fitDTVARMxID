@@ -10,13 +10,13 @@ lapply(
     alpha <- fitDTVARMxID:::.FitDTVARMxIDAlpha(
       k = k,
       statenames = statenames,
+      center = FALSE,
       alpha_fixed = FALSE,
       alpha_free = rep(x = TRUE, times = k),
       alpha_values = rep(x = 1, times = k),
       alpha_lbound = rep(x = -1, times = k),
       alpha_ubound = rep(x = +1, times = k),
-      name_alpha = "alpha",
-      center = FALSE
+      name = "alpha"
     )
     alpha_name <- alpha$alpha@name
     alpha_values <- alpha$alpha@values

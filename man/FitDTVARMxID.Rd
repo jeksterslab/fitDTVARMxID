@@ -8,12 +8,17 @@ FitDTVARMxID(
   data,
   observed,
   id,
-  alpha_fixed = TRUE,
+  center = TRUE,
+  mu_eta_fixed = FALSE,
+  mu_eta_free = NULL,
+  mu_eta_values = NULL,
+  mu_eta_lbound = NULL,
+  mu_eta_ubound = NULL,
+  alpha_fixed = FALSE,
   alpha_free = NULL,
   alpha_values = NULL,
   alpha_lbound = NULL,
   alpha_ubound = NULL,
-  center = FALSE,
   beta_fixed = FALSE,
   beta_free = NULL,
   beta_values = NULL,
@@ -28,7 +33,7 @@ FitDTVARMxID(
   psi_l_values = NULL,
   psi_l_lbound = NULL,
   psi_l_ubound = NULL,
-  nu_fixed = FALSE,
+  nu_fixed = TRUE,
   nu_free = NULL,
   nu_values = NULL,
   nu_lbound = NULL,
@@ -93,6 +98,32 @@ of the names of the observed variables in the data.}
 \item{id}{Character string.
 A character string of the name of the ID variable in the data.}
 
+\item{center}{Logical.
+If TRUE, use the mean-centered (mean-reverting) state equation.
+Note that when \code{center = TRUE}, \code{alpha} is implied
+and the set-point \code{mu_eta} is estimated.}
+
+\item{mu_eta_fixed}{Logical.
+If \code{TRUE}, the dynamic model set-point vector \code{mu_eta} is fixed.
+If \code{FALSE}, \code{mu_eta} is estimated.}
+
+\item{mu_eta_free}{Logical vector indicating which elements of \code{mu_eta}
+are freely estimated. If \code{NULL}, all elements are free.
+Ignored if \code{mu_eta_fixed = TRUE}.}
+
+\item{mu_eta_values}{Numeric vector of values for \code{mu_eta}.
+If \code{mu_eta_fixed = TRUE}, these are fixed values.
+If \code{mu_eta_fixed = FALSE}, these are starting values.
+If \code{NULL}, defaults to a vector of zeros.}
+
+\item{mu_eta_lbound}{Numeric vector of lower bounds for \code{mu_eta}.
+If \code{NULL}, no lower bounds are set.
+Ignored if \code{mu_eta_fixed = TRUE}.}
+
+\item{mu_eta_ubound}{Numeric vector of upper bounds for \code{mu_eta}.
+If \code{NULL}, no upper bounds are set.
+Ignored if \code{mu_eta_fixed = TRUE}.}
+
 \item{alpha_fixed}{Logical.
 If \code{TRUE}, the dynamic model intercept vector \code{alpha} is fixed.
 If \code{FALSE}, \code{alpha} is estimated.}
@@ -113,11 +144,6 @@ Ignored if \code{alpha_fixed = TRUE}.}
 \item{alpha_ubound}{Numeric vector of upper bounds for \code{alpha}.
 If \code{NULL}, no upper bounds are set.
 Ignored if \code{alpha_fixed = TRUE}.}
-
-\item{center}{Logical.
-If TRUE, use the mean-centered (mean-reverting) state equation.
-Note that when \code{center = TRUE}, \code{alpha} is interpreted as the set-point
-and not the intercept in the state equation.}
 
 \item{beta_fixed}{Logical.
 If \code{TRUE}, the dynamic model coefficient matrix \code{beta} is fixed.
@@ -504,7 +530,7 @@ set.seed(42)
 k <- 2
 n <- 5
 time <- 100
-alpha <- rep(x = 0, times = k)
+alpha <- rep(x = 5, times = k)
 beta <- matrix(
   data = c(.5, .0, .2, .5),
   nrow = k,
@@ -516,7 +542,7 @@ psi <- matrix(
   ncol = k
 )
 psi_l <- t(chol(psi))
-nu <- rep(x = 5, times = k)
+nu <- rep(x = 0, times = k)
 lambda <- diag(k)
 theta <- matrix(
   data = c(exp(-2), 0, 0, exp(-2.8)),
@@ -552,11 +578,28 @@ sim <- simStateSpace::SimSSMIVary(
 data <- as.data.frame(sim)
 
 # Fit the model--------------------------------------------------------------
+# center = TRUE
 library(fitDTVARMxID)
 fit <- FitDTVARMxID(
   data = data,
   observed = paste0("y", seq_len(k)),
-  id = "id"
+  id = "id",
+  center = TRUE
+)
+print(fit)
+summary(fit)
+coef(fit)
+vcov(fit)
+converged(fit)
+
+# Fit the model--------------------------------------------------------------
+# center = FALSE
+library(fitDTVARMxID)
+fit <- FitDTVARMxID(
+  data = data,
+  observed = paste0("y", seq_len(k)),
+  id = "id",
+  center = FALSE
 )
 print(fit)
 summary(fit)

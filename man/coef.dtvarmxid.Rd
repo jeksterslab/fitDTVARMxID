@@ -6,6 +6,7 @@
 \usage{
 \method{coef}{dtvarmxid}(
   object,
+  mu_eta = TRUE,
   alpha = TRUE,
   beta = TRUE,
   nu = TRUE,
@@ -21,6 +22,12 @@
 }
 \arguments{
 \item{object}{Object of class \code{dtvarmxid}.}
+
+\item{mu_eta}{Logical.
+If \code{mu_eta = TRUE},
+include estimates of the \code{mu_eta} vector, if available.
+If \code{mu_eta = FALSE},
+exclude estimates of the \code{mu_eta} vector.}
 
 \item{alpha}{Logical.
 If \code{alpha = TRUE},

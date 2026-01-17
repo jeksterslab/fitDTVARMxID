@@ -1,6 +1,6 @@
 Package: fitDTVARMxID
 Title: Fit the Discrete-Time Vector Autoregressive Model for Multiple Individuals
-Version: 0.0.0.9003
+Version: 0.0.0.9004
 Authors@R: 
     person(given = "Ivan Jacob Agaloos",
            family = "Pesigan",
@@ -17,7 +17,7 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
 Depends:
-    R (>= 4.5.0),
+    R (>= 4.1.0),
     OpenMx (>= 2.22.10)
 Imports:
     stats,
@@ -27,5 +27,5 @@ Suggests:
     knitr,
     rmarkdown,
     testthat,
-    simStateSpace
+    simStateSpace (>= 1.2.14)
 RoxygenNote: 7.3.3.9000

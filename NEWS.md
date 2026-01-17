@@ -1,3 +1,7 @@
+# fitDTVARMxID 0.0.0.9004
+
+* Added centered parameterization.
+
 # fitDTVARMxID 0.0.0.9003
 
 * Methods can now return non-converged cases.

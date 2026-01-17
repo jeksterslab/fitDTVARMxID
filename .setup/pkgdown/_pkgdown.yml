@@ -23,9 +23,10 @@ reference:
   - has_keyword("methods")
 
 articles:
-- title: Example with Fixed Parameters
+- title: Examples with Fixed Parameters
   contents:
-  - example
+  - example-center-false
+  - example-center-true
 - title: Session Information
   contents:
   - session
