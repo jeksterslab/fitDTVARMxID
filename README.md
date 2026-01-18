@@ -1,17 +1,27 @@
 fitDTVARMxID
 ================
 Ivan Jacob Agaloos Pesigan
-2026-01-17
+2026-01-18
 
 <!-- README.md is generated from .setup/readme/README.Rmd. Please edit that file -->
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/jeksterslab/fitDTVARMxID/workflows/R-CMD-check/badge.svg)](https://github.com/jeksterslab/fitDTVARMxID/actions)
-[![test-coverage](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/test-coverage.yml)
-[![lint](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/lint.yml/badge.svg)](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/lint.yml)
-[![pkgdown](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/pkgdown-gh-pages.yml/badge.svg)](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/pkgdown-gh-pages.yml)
-[![codecov](https://codecov.io/gh/jeksterslab/fitDTVARMxID/branch/main/graph/badge.svg)](https://codecov.io/gh/jeksterslab/fitDTVARMxID)
+[![Make
+Project](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/make.yml/badge.svg)](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/make.yml)
+[![R-CMD-check-standard](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/check-standard.yml/badge.svg)](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/check-standard.yml)
+[![R Package Test
+Coverage](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/test-coverage.yml)
+[![Lint R
+Package](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/lint.yml/badge.svg)](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/lint.yml)
+[![Package Website (GitHub
+Pages)](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/pkgdown-gh-pages.yml/badge.svg)](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/pkgdown-gh-pages.yml)
+[![Compile
+LaTeX](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/latex.yml/badge.svg)](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/latex.yml)
+[![Shell
+Check](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/shellcheck.yml)
+[![pages-build-deployment](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/jeksterslab/fitDTVARMxID/actions/workflows/pages/pages-build-deployment)
+[![codecov](https://codecov.io/gh/jeksterslab/fitDTVARMxID/branch/main/graph/badge.svg?token=KVLUET3DJ6)](https://codecov.io/gh/jeksterslab/fitDTVARMxID)
 <!-- badges: end -->
 
 ## Description

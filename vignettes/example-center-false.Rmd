@@ -1,7 +1,7 @@
 ---
 title: "The State Space Model (center = FALSE)"
 author: "Ivan Jacob Agaloos Pesigan"
-date: "2026-01-16"
+date: "2026-01-17"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
