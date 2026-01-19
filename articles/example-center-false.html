@@ -24,7 +24,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">fitDTVARMxID</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9004</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +60,7 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2026-01-17</h4>
+            <h4 data-toc-skip class="date">2026-01-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/fitDTVARMxID/blob/main/vignettes/example-center-false.Rmd"><code>vignettes/example-center-false.Rmd</code></a></small>
       <div class="d-none name"><code>example-center-false.Rmd</code></div>
@@ -604,23 +604,8 @@ are fixed using <code>mu0</code> and <code>sigma0</code>.</p>
 </h4>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit</span>, means <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Call:</span></span>
-<span><span class="co">#&gt; FitDTVARMxID(data = data, observed = c("y1", "y2", "y3"), id = "id", </span></span>
-<span><span class="co">#&gt;     center = FALSE, alpha_values = alpha_values, beta_values = beta_values, </span></span>
-<span><span class="co">#&gt;     psi_d_values = psi_d_values, psi_l_values = psi_l_values, </span></span>
-<span><span class="co">#&gt;     theta_d_values = theta_d_values, mu0_values = mu0_values, </span></span>
-<span><span class="co">#&gt;     sigma0_d_values = sigma0_d_values, sigma0_l_values = sigma0_l_values, </span></span>
-<span><span class="co">#&gt;     ncores = parallel::detectCores())</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Means of the estimated paramaters per individual.</span></span>
-<span><span class="co">#&gt;    beta_1_1    beta_2_1    beta_3_1    beta_1_2    beta_2_2    beta_3_2 </span></span>
-<span><span class="co">#&gt;      0.6976      0.5086     -0.1077     -0.0053      0.5966      0.4084 </span></span>
-<span><span class="co">#&gt;    beta_1_3    beta_2_3    beta_3_3   alpha_1_1   alpha_2_1   alpha_3_1 </span></span>
-<span><span class="co">#&gt;      0.0013      0.0001      0.4929      0.9489      0.9323      0.2921 </span></span>
-<span><span class="co">#&gt;   psi_l_2_1   psi_l_3_1   psi_l_3_2   psi_d_1_1   psi_d_2_1   psi_d_3_1 </span></span>
-<span><span class="co">#&gt;     -0.0044     -0.0012      0.0056     -2.2775     -2.3049     -2.3217 </span></span>
-<span><span class="co">#&gt; theta_d_1_1 theta_d_2_1 theta_d_3_1 </span></span>
-<span><span class="co">#&gt;     -1.5797     -1.5318     -1.5767</span></span></code></pre></div>
+<span><span class="co">#&gt; Error in `object$coefficients`:</span></span>
+<span><span class="co">#&gt; ! $ operator is invalid for atomic vectors</span></span></code></pre></div>
 </div>
 </div>
 </div>

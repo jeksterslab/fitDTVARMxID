@@ -11,12 +11,12 @@ Source:
 [`inst/CITATION`](https://github.com/jeksterslab/fitDTVARMxID/blob/main/inst/CITATION)
 
 Pesigan, I. J. A. (2026). fitDTVARMxID: Fit the Discrete-Time Vector
-Autoregressive Model for Multiple Individuals. R package version
-0.0.0.9004. https://github.com/jeksterslab/fitDTVARMxID
+Autoregressive Model for Multiple Individuals. R package version 1.0.0.
+https://github.com/jeksterslab/fitDTVARMxID
 
     @Manual{,
       author = {Ivan Jacob Agaloos Pesigan},
       title = {fitDTVARMxID: Fit the Discrete-Time Vector Autoregressive Model for Multiple Individuals},
       year = {2026},
-      note = {R package version 0.0.0.9004},
+      note = {R package version 1.0.0},
     }
