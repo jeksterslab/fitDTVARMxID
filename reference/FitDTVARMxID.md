@@ -522,11 +522,12 @@ and \\\boldsymbol{\Theta}\\ are model parameters. \\\mathbf{y}\_{i, t}\\
 represents a vector of observed random variables,
 \\\boldsymbol{\eta}\_{i, t}\\ a vector of latent random variables, and
 \\\boldsymbol{\varepsilon}\_{i, t}\\ a vector of random measurement
-errors, at time \\t\\ and individual \\i\\. \\\boldsymbol{\Lambda}\\
-denotes a matrix of factor loadings, and \\\boldsymbol{\Theta}\\ the
-covariance matrix of \\\boldsymbol{\varepsilon}\\. In this model,
-\\\boldsymbol{\Lambda}\\ is an identity matrix and
-\\\boldsymbol{\Theta}\\ is a diagonal matrix.
+errors, at time \\t\\ and individual \\i\\. \\\boldsymbol{\nu}\\,
+denotes a vector of intercepts (fixed to a null vector by default),
+\\\boldsymbol{\Lambda}\\ a matrix of factor loadings, and
+\\\boldsymbol{\Theta}\\ the covariance matrix of
+\\\boldsymbol{\varepsilon}\\. In this model, \\\boldsymbol{\Lambda}\\ is
+an identity matrix and \\\boldsymbol{\Theta}\\ is a diagonal matrix.
 
 The dynamic structure is given by \$\$ \boldsymbol{\eta}\_{i, t} =
 \boldsymbol{\alpha} + \boldsymbol{\beta} \boldsymbol{\eta}\_{i, t - 1} +
@@ -545,6 +546,13 @@ denotes a vector of intercepts, \\\boldsymbol{\beta}\\ a matrix of
 autoregression and cross regression coefficients, and
 \\\boldsymbol{\Psi}\\ the covariance matrix of \\\boldsymbol{\zeta}\_{i,
 t}\\.
+
+If `center = TRUE`, the dynamic structure is parameterized as follows
+\$\$ \boldsymbol{\eta}\_{i, t} = \boldsymbol{\mu}\_{\boldsymbol{\eta}} +
+\boldsymbol{\beta} \left( \boldsymbol{\eta}\_{i, t - 1} -
+\boldsymbol{\mu}\_{\boldsymbol{\eta}} \right) \$\$ where
+\\\boldsymbol{\mu}\_{\boldsymbol{\eta}}\\ is equilibrium level of the
+latent state toward which the system is pulled over time.
 
 ## References
 
