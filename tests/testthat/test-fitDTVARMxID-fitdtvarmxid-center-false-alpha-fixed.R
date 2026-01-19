@@ -1,4 +1,4 @@
-## ---- test-fitDTVARMxID-fitdtvarmxid-center-false
+## ---- test-fitDTVARMxID-fitdtvarmxid-center-false-alpha-fixed
 lapply(
   X = 1,
   FUN = function(i,
@@ -44,6 +44,8 @@ lapply(
       observed = paste0("y", seq_len(k)),
       id = "id",
       center = FALSE,
+      alpha_fixed = TRUE,
+      alpha_values = list(alpha),
       theta_fixed = TRUE, # no measurement component
       seed = 42
     )
@@ -178,6 +180,6 @@ lapply(
       }
     )
   },
-  text = "test-fitDTVARMxID-fitdtvarmxid-center-false",
+  text = "test-fitDTVARMxID-fitdtvarmxid-center-false-alpha-fixed",
   tol = 0.20
 )

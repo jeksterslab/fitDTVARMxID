@@ -1,4 +1,4 @@
-## ---- test-fitDTVARMxID-fitdtvarmxid-center-false
+## ---- test-fitDTVARMxID-fitdtvarmxid-center-true-mu-eta
 lapply(
   X = 1,
   FUN = function(i,
@@ -43,7 +43,9 @@ lapply(
       data = data,
       observed = paste0("y", seq_len(k)),
       id = "id",
-      center = FALSE,
+      center = TRUE,
+      mu_eta_fixed = TRUE,
+      mu_eta_values = list(mu_eta),
       theta_fixed = TRUE, # no measurement component
       seed = 42
     )
@@ -61,6 +63,22 @@ lapply(
       }
     )
     library(OpenMx)
+    mu_eta_hat <- colMeans(
+      do.call(
+        what = "rbind",
+        args = lapply(
+          X = seq_len(n),
+          FUN = function(i) {
+            c(
+              mxEvalByName(
+                name = "mu_eta",
+                model = fit$output[[i]]
+              )
+            )
+          }
+        )
+      )
+    )
     alpha_hat <- colMeans(
       do.call(
         what = "rbind",
@@ -108,6 +126,23 @@ lapply(
           }
         )
       )
+    )
+    testthat::test_that(
+      paste(text, "mu_eta"),
+      {
+        testthat::skip_on_cran()
+        testthat::expect_true(
+          all(
+            abs(
+              c(
+                mu_eta
+              ) - c(
+                mu_eta_hat
+              )
+            ) <= tol
+          )
+        )
+      }
     )
     testthat::test_that(
       paste(text, "alpha"),
@@ -169,8 +204,8 @@ lapply(
             data = data,
             observed = paste0("y", seq_len(k)),
             id = "id",
-            center = TRUE,
-            alpha_fixed = FALSE,
+            center = FALSE,
+            mu_eta_fixed = FALSE,
             nu_fixed = FALSE,
             theta_fixed = TRUE # no measurement component
           )
@@ -178,6 +213,6 @@ lapply(
       }
     )
   },
-  text = "test-fitDTVARMxID-fitdtvarmxid-center-false",
+  text = "test-fitDTVARMxID-fitdtvarmxid-center-true-mu-eta",
   tol = 0.20
 )

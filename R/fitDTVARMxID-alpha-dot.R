@@ -24,10 +24,14 @@
         )
       },
       error = function(e) {
+        # nocov start
         stop("Error in `alpha_values`: ", e$message)
+        # nocov end
       },
       warning = function(w) {
+        # nocov start
         stop("Warning in `alpha_values`: ", w$message)
+        # nocov end
       }
     )
     alpha <- .MxHelperFullMxMatrix(

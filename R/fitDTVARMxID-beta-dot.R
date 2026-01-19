@@ -23,10 +23,14 @@
         )
       },
       error = function(e) {
+        # nocov start
         stop("Error in `beta_values`: ", e$message)
+        # nocov end
       },
       warning = function(w) {
+        # nocov start
         stop("Warning in `beta_values`: ", w$message)
+        # nocov end
       }
     )
     if (is.null(beta_lbound)) {

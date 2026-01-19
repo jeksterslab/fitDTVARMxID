@@ -6,6 +6,12 @@ lapply(
                  tol) {
     message(text)
     set.seed(42)
+    if (!identical(Sys.getenv("NOT_CRAN"), "true") && !interactive()) {
+      message("CRAN: tests skipped.")
+      # nolint start
+      return(invisible(NULL))
+      # nolint end
+    }
     k <- 2
     n <- 10
     time <- 1000
@@ -38,7 +44,8 @@ lapply(
       observed = paste0("y", seq_len(k)),
       id = "id",
       center = TRUE,
-      theta_fixed = TRUE # no measurement component
+      theta_fixed = TRUE, # no measurement component
+      seed = 42
     )
     print(fit)
     summary(fit)
@@ -63,6 +70,22 @@ lapply(
             c(
               mxEvalByName(
                 name = "mu_eta",
+                model = fit$output[[i]]
+              )
+            )
+          }
+        )
+      )
+    )
+    alpha_hat <- colMeans(
+      do.call(
+        what = "rbind",
+        args = lapply(
+          X = seq_len(n),
+          FUN = function(i) {
+            c(
+              mxEvalByName(
+                name = "alpha",
                 model = fit$output[[i]]
               )
             )
@@ -120,6 +143,23 @@ lapply(
       }
     )
     testthat::test_that(
+      paste(text, "alpha"),
+      {
+        testthat::skip_on_cran()
+        testthat::expect_true(
+          all(
+            abs(
+              c(
+                alpha
+              ) - c(
+                alpha_hat
+              )
+            ) <= tol
+          )
+        )
+      }
+    )
+    testthat::test_that(
       paste(text, "beta"),
       {
         testthat::skip_on_cran()
@@ -149,6 +189,23 @@ lapply(
                 psi_hat
               )
             ) <= tol
+          )
+        )
+      }
+    )
+    testthat::test_that(
+      paste(text, "error"),
+      {
+        testthat::skip_on_cran()
+        testthat::expect_error(
+          FitDTVARMxID(
+            data = data,
+            observed = paste0("y", seq_len(k)),
+            id = "id",
+            center = FALSE,
+            mu_eta_fixed = FALSE,
+            nu_fixed = FALSE,
+            theta_fixed = TRUE # no measurement component
           )
         )
       }

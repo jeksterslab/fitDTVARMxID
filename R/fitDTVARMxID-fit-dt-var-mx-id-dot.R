@@ -149,6 +149,7 @@
     path = path,
     prefix = prefix
   )
+  # nocov start
   if (is.null(ncores)) {
     par <- FALSE
   } else {
@@ -163,7 +164,9 @@
       par <- FALSE
     }
   }
+  # nocov end
   if (par) {
+    # nocov start
     OpenMx::mxOption(
       key = "Number of Threads",
       value = 1
@@ -238,6 +241,7 @@
         )
       }
     }
+    # nocov end
   } else {
     if (!is.null(seed)) {
       set.seed(seed)
