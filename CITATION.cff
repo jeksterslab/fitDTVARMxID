@@ -9,7 +9,7 @@ type: software
 license: MIT
 title: 'fitDTVARMxID: Fit the Discrete-Time Vector Autoregressive Model for Multiple
   Individuals'
-version: 0.0.0.9004
+version: 1.0.0
 abstract: Fit the discrete-time vector autoregressive model for multiple individuals
   using the 'OpenMx' package (Hunter, 2017 <https://doi.org/10.1080/10705511.2017.1369354>).
 authors:
@@ -27,7 +27,7 @@ preferred-citation:
     email: jeksterslab@gmail.com
     orcid: https://orcid.org/0000-0003-4818-8420
   year: '2026'
-  notes: R package version 0.0.0.9004
+  notes: R package version 1.0.0
 repository-code: https://github.com/jeksterslab/fitDTVARMxID
 url: https://jeksterslab.github.io/fitDTVARMxID/
 contact:
