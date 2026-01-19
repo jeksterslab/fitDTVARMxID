@@ -45,6 +45,7 @@ lapply(
       id = "id",
       center = FALSE,
       theta_fixed = TRUE, # no measurement component
+      robust = TRUE,
       seed = 42
     )
     print(fit)

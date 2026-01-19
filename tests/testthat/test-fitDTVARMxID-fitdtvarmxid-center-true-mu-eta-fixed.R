@@ -47,6 +47,7 @@ lapply(
       mu_eta_fixed = TRUE,
       mu_eta_values = list(mu_eta),
       theta_fixed = TRUE, # no measurement component
+      robust = TRUE,
       seed = 42
     )
     print(fit)

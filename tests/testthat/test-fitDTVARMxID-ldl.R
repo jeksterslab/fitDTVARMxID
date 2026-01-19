@@ -16,13 +16,11 @@ lapply(
         )
         X <- crossprod(A) + diag(1e-6, 4)
         out <- LDL(X)
-        # X = L D L'
         testthat::expect_equal(
           out$l_mat_unit %*% out$d_mat %*% t(out$l_mat_unit),
           X,
           tolerance = 1e-8
         )
-        # diff = x - y
         testthat::expect_equal(
           out$diff,
           X - out$y,

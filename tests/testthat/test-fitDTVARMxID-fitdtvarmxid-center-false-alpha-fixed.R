@@ -47,6 +47,7 @@ lapply(
       alpha_fixed = TRUE,
       alpha_values = list(alpha),
       theta_fixed = TRUE, # no measurement component
+      robust = TRUE,
       seed = 42
     )
     print(fit)
