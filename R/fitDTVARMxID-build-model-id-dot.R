@@ -364,8 +364,10 @@
         )
       )
       needs_rewrite <- !file.exists(fn) || {
+        # nocov start
         obj <- tryCatch(readRDS(fn), error = function(e) NULL)
         is.null(obj) || !inherits(obj, "MxModel")
+        # nocov end
       }
       if (overwrite || needs_rewrite) {
         saveRDS(

@@ -459,8 +459,10 @@ and
 \eqn{\boldsymbol{\varepsilon}_{i, t}}
 a vector of random measurement errors,
 at time \eqn{t} and individual \eqn{i}.
+\eqn{\boldsymbol{\nu}},
+denotes a vector of intercepts (fixed to a null vector by default),
 \eqn{\boldsymbol{\Lambda}}
-denotes a matrix of factor loadings,
+a matrix of factor loadings,
 and
 \eqn{\boldsymbol{\Theta}}
 the covariance matrix of
@@ -522,6 +524,23 @@ and
 \eqn{\boldsymbol{\Psi}}
 the covariance matrix of
 \eqn{\boldsymbol{\zeta}_{i, t}}.
+
+If \code{center = TRUE}, the dynamic structure is parameterized as follows
+\deqn{
+  \boldsymbol{\eta}_{i, t}
+  =
+  \boldsymbol{\mu}_{\boldsymbol{\eta}}
+  +
+  \boldsymbol{\beta}
+  \left(
+    \boldsymbol{\eta}_{i, t - 1}
+    -
+    \boldsymbol{\mu}_{\boldsymbol{\eta}}
+  \right)
+}
+where \eqn{\boldsymbol{\mu}_{\boldsymbol{\eta}}}
+is equilibrium level of the latent state
+toward which the system is pulled over time.
 }
 \examples{
 \dontrun{
