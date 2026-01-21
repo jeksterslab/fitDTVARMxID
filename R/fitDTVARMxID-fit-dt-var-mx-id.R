@@ -123,6 +123,8 @@
 #'     -
 #'     \boldsymbol{\mu}_{\boldsymbol{\eta}}
 #'   \right)
+#'   +
+#'   \boldsymbol{\zeta}_{i, t}
 #' }
 #' where \eqn{\boldsymbol{\mu}_{\boldsymbol{\eta}}}
 #' is equilibrium level of the latent state
@@ -378,8 +380,7 @@
 #'     \item{fun}{Function used ("FitDTVARMxID").}
 #'     \item{output}{A list of fitted OpenMx models.}
 #'     \item{robust}{A list of output from [OpenMx::imxRobustSE()]
-#'         with argument `details = TRUE` if `random = TRUE`
-#'         for each `id`.}
+#'         with argument `details = TRUE` for each `id`.}
 #'   }
 #'
 #' @examples
@@ -573,6 +574,7 @@ FitDTVARMxID <- function(data,
   )
   if (!silent) {
     if (interactive()) {
+      # nocov start
       message(
         paste0(
           "Intermediate files will be saved in ",
@@ -580,6 +582,7 @@ FitDTVARMxID <- function(data,
           "\n"
         )
       )
+      # nocov end
     }
   }
   args <- list(

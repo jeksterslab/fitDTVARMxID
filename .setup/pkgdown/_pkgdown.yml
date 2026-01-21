@@ -25,8 +25,8 @@ reference:
 articles:
 - title: Examples with Fixed Parameters
   contents:
-  - example-center-false
   - example-center-true
+  - example-center-false
 - title: Session Information
   contents:
   - session
