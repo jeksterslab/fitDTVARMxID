@@ -535,8 +535,23 @@ fit <- FitDTVARMxID(
 ``` r
 
 summary(fit, means = TRUE)
-#> Error in `object$coefficients`:
-#> ! $ operator is invalid for atomic vectors
+#> Call:
+#> FitDTVARMxID(data = data, observed = c("y1", "y2", "y3"), id = "id", 
+#>     center = FALSE, alpha_values = alpha_values, beta_values = beta_values, 
+#>     psi_d_values = psi_d_values, psi_l_values = psi_l_values, 
+#>     theta_d_values = theta_d_values, mu0_values = mu0_values, 
+#>     sigma0_d_values = sigma0_d_values, sigma0_l_values = sigma0_l_values, 
+#>     ncores = parallel::detectCores())
+#> 
+#> Means of the estimated paramaters per individual.
+#>    beta_1_1    beta_2_1    beta_3_1    beta_1_2    beta_2_2    beta_3_2 
+#>      0.6975      0.5086     -0.1076     -0.0053      0.5965      0.4083 
+#>    beta_1_3    beta_2_3    beta_3_3   alpha_1_1   alpha_2_1   alpha_3_1 
+#>      0.0013      0.0001      0.4932      0.9488      0.9324      0.2915 
+#>   psi_l_2_1   psi_l_3_1   psi_l_3_2   psi_d_1_1   psi_d_2_1   psi_d_3_1 
+#>     -0.0045     -0.0012      0.0056     -2.2771     -2.3046     -2.3230 
+#> theta_d_1_1 theta_d_2_1 theta_d_3_1 
+#>     -1.5799     -1.5319     -1.5621
 ```
 
 ## References
