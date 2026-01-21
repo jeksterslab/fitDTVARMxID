@@ -408,8 +408,7 @@ a list with the following elements:
 \item{fun}{Function used ("FitDTVARMxID").}
 \item{output}{A list of fitted OpenMx models.}
 \item{robust}{A list of output from \code{\link[OpenMx:imxRobustSE]{OpenMx::imxRobustSE()}}
-with argument \code{details = TRUE} if \code{random = TRUE}
-for each \code{id}.}
+with argument \code{details = TRUE} for each \code{id}.}
 }
 }
 \description{
@@ -537,6 +536,8 @@ If \code{center = TRUE}, the dynamic structure is parameterized as follows
     -
     \boldsymbol{\mu}_{\boldsymbol{\eta}}
   \right)
+  +
+  \boldsymbol{\zeta}_{i, t}
 }
 where \eqn{\boldsymbol{\mu}_{\boldsymbol{\eta}}}
 is equilibrium level of the latent state

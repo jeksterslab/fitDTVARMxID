@@ -51,7 +51,9 @@ lapply(
       seed = 42
     )
     print(fit)
+    print(fit, means = TRUE)
     summary(fit)
+    summary(fit, means = TRUE)
     coef(fit)
     vcov(fit)
     testthat::test_that(
@@ -60,6 +62,9 @@ lapply(
         testthat::skip_on_cran()
         testthat::expect_true(
           all(converged(fit, prop = FALSE))
+        )
+        testthat::expect_true(
+          converged(fit, prop = TRUE) == 1
         )
       }
     )
