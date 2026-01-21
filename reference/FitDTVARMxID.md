@@ -507,7 +507,7 @@ following elements:
 
   A list of output from
   [`OpenMx::imxRobustSE()`](https://rdrr.io/pkg/OpenMx/man/imxRobustSE.html)
-  with argument `details = TRUE` if `random = TRUE` for each `id`.
+  with argument `details = TRUE` for each `id`.
 
 ## Details
 
@@ -550,9 +550,9 @@ t}\\.
 If `center = TRUE`, the dynamic structure is parameterized as follows
 \$\$ \boldsymbol{\eta}\_{i, t} = \boldsymbol{\mu}\_{\boldsymbol{\eta}} +
 \boldsymbol{\beta} \left( \boldsymbol{\eta}\_{i, t - 1} -
-\boldsymbol{\mu}\_{\boldsymbol{\eta}} \right) \$\$ where
-\\\boldsymbol{\mu}\_{\boldsymbol{\eta}}\\ is equilibrium level of the
-latent state toward which the system is pulled over time.
+\boldsymbol{\mu}\_{\boldsymbol{\eta}} \right) + \boldsymbol{\zeta}\_{i,
+t} \$\$ where \\\boldsymbol{\mu}\_{\boldsymbol{\eta}}\\ is equilibrium
+level of the latent state toward which the system is pulled over time.
 
 ## References
 
